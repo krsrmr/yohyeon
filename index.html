@@ -1,0 +1,1024 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>귀허이록 歸墟異錄</title>
+<meta name="description" content="귀허에서 새어 나온 탁기, 결계 틈이 열리는 수도 운경. 진마사 임시 총령 요현과 함께하는 동양풍 퇴마 롤플레이 안내서.">
+<meta name="theme-color" content="#3e2614">
+<meta property="og:type" content="website">
+<meta property="og:title" content="歸墟異錄 · 귀허이록">
+<meta property="og:description" content="귀허에서 새어 나온 탁기, 결계 틈이 열리는 수도 운경. 진마사 임시 총령 요현과 함께하는 동양풍 퇴마 롤플레이 안내서.">
+<meta property="og:url" content="https://krsrmr.github.io/yohyeon/">
+<meta property="og:image" content="https://krsrmr.github.io/yohyeon/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='6' fill='%23b42a1f'/%3E%3Crect x='10' y='10' width='44' height='44' rx='3' fill='none' stroke='%23f8ecd2' stroke-width='2.5'/%3E%3Cpath d='M22 20h20M32 20v24M22 44h20' stroke='%23f8ecd2' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Noto+Serif+KR:wght@400;500;600;700&display=swap">
+<style>
+/* 지도 컴포넌트(도성도)의 팔레트: 한지 #efe4c8, 먹 #2a2018, 주사 #b42a1f, 산 #5d8a7a→#9fb98f, 기와 #4e6b72, 길 #c4a266, 목재 틀 #5a3a22→#3e2614 */
+:root {
+  --paper: #ede2c6;
+  --paper-2: #e3d5b2;
+  --surface: #f6eedb;
+  --ink: #2a2018;
+  --muted: #5c4e40;
+  --line: #c9b68e;
+  --line-soft: #dccca6;
+  --seal: #b42a1f;
+  --seal-ink: #f8ecd2;
+  --jade: #3d6a5b;
+  --jade-soft: #dde2cc;
+  --teal: #4e6b72;
+  --gold: #9a7634;
+  --wood: #3e2614;
+  --wood-2: #5a3a22;
+  --glow: rgba(255, 250, 235, 0.55);
+  --grain: rgba(120, 95, 60, 0.05);
+  --display: "Song Myung", "Noto Serif KR", serif;
+  --body: "Noto Serif KR", "Nanum Myeongjo", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #17130e; --paper-2: #201a13; --surface: #221c15; --ink: #ecdfc4; --muted: #b6a587;
+    --line: #4a3c2b; --line-soft: #33291e; --seal: #cf4b38; --seal-ink: #fff3dc; --jade: #8fbba7; --jade-soft: #22302a;
+    --teal: #95b4bb; --gold: #d3b26c; --wood: #0c0906; --wood-2: #2b1d11; --glow: rgba(143, 187, 167, 0.07); --grain: rgba(236, 223, 196, 0.025);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #17130e; --paper-2: #201a13; --surface: #221c15; --ink: #ecdfc4; --muted: #b6a587;
+  --line: #4a3c2b; --line-soft: #33291e; --seal: #cf4b38; --seal-ink: #fff3dc; --jade: #8fbba7; --jade-soft: #22302a;
+  --teal: #95b4bb; --gold: #d3b26c; --wood: #0c0906; --wood-2: #2b1d11; --glow: rgba(143, 187, 167, 0.07); --grain: rgba(236, 223, 196, 0.025);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse 90% 50% at 50% 0%, var(--glow), transparent 70%),
+    repeating-linear-gradient(17deg, var(--grain) 0px, var(--grain) 1px, transparent 1px, transparent 5px),
+    repeating-linear-gradient(-29deg, var(--grain) 0px, var(--grain) 1px, transparent 1px, transparent 9px);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 40; background: var(--surface); }
+
+.shell {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: 52px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px max(16px, env(safe-area-inset-right, 0px)) 72px max(16px, env(safe-area-inset-left, 0px));
+}
+
+/* ── 목차: 족자처럼 위아래에 나무 축 ── */
+.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 28px); align-self: start; }
+.toc-scroll {
+  position: relative; background: var(--surface); border: 1px solid var(--line);
+  outline: 1px solid var(--line-soft); outline-offset: -6px; padding: 22px 12px 20px;
+  max-height: calc(100vh - 72px); overflow-y: auto;
+}
+.toc::before, .toc::after {
+  content: ""; position: absolute; left: -7px; right: -7px; height: 10px; border-radius: 5px; z-index: 1;
+  background: linear-gradient(180deg, var(--wood-2), var(--wood)); box-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+.toc::before { top: -5px; }
+.toc::after { bottom: -5px; }
+.brand { display: flex; align-items: center; gap: 11px; padding: 0 6px 16px; margin-bottom: 8px; border-bottom: 1px solid var(--line); }
+.brand-seal {
+  width: 42px; height: 42px; flex-shrink: 0; display: grid; place-items: center; transform: rotate(-3deg);
+  background: var(--seal); color: var(--seal-ink); font-family: var(--display); font-size: 1rem; line-height: 1.05; border-radius: 3px;
+  box-shadow: inset 0 0 0 2px var(--seal), inset 0 0 0 3px var(--seal-ink); text-align: center; padding-top: 1px;
+}
+.brand-name { font-family: var(--display); font-size: 1.5rem; line-height: 1.2; letter-spacing: 0.08em; }
+.brand-sub { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; }
+.toc-group-title { font-size: 0.75rem; letter-spacing: 0.2em; color: var(--muted); padding: 12px 10px 4px; }
+.toc a {
+  display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 3px;
+  color: var(--ink); text-decoration: none; font-size: 0.9375rem; line-height: 1.4;
+}
+.toc a .hz { font-family: var(--display); color: var(--gold); width: 1.2em; text-align: center; flex-shrink: 0; font-size: 1.0625rem; }
+.toc a:hover { background: var(--paper-2); }
+.toc a[aria-current="page"] { background: var(--seal); color: var(--seal-ink); }
+.toc a[aria-current="page"] .hz { color: var(--seal-ink); }
+a:focus-visible, button:focus-visible, .pin:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.toc .close { display: none; }
+
+.topbar { display: none; }
+
+/* ── 본문 ── */
+main { min-width: 0; max-width: 780px; }
+.chapter { animation: rise .45s ease-out both; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.ch-head {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center;
+  padding: 6px 0 22px; margin-bottom: 24px; border-bottom: 1px solid var(--line);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 84'%3E%3Cpath d='M0 84 Q36 46 66 34 Q96 46 136 84Z M86 84 Q136 22 168 8 Q200 22 252 84Z M196 84 Q236 46 258 38 Q280 50 300 84Z' fill='%235d8a7a' fill-opacity='.17'/%3E%3Cpath d='M40 84 Q80 58 104 52 Q128 60 160 84Z' fill='%235d8a7a' fill-opacity='.12'/%3E%3C/svg%3E") right bottom / 300px 84px no-repeat;
+}
+.ch-seal {
+  width: 66px; height: 66px; display: grid; place-items: center; border-radius: 3px; transform: rotate(-3deg);
+  background: var(--seal); color: var(--seal-ink); font-family: var(--display); font-size: 2.25rem;
+  box-shadow: inset 0 0 0 3px var(--seal), inset 0 0 0 4.5px var(--seal-ink), 0 1px 0 rgba(0,0,0,.1);
+}
+.eyebrow { font-size: 0.8125rem; letter-spacing: 0.18em; color: var(--muted); }
+h1, h2 { font-family: var(--display); font-weight: 400; line-height: 1.25; margin: 0; text-wrap: balance; }
+h1 { font-size: 2.25rem; }
+h1 .hanja { font-size: 0.7em; }
+h2 { font-size: 1.5rem; margin: 42px 0 14px; display: flex; align-items: center; gap: 10px; }
+h2::before {
+  content: ""; width: 30px; height: 15px; flex-shrink: 0; background: var(--gold);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 15'%3E%3Cpath d='M2 12.5c0-4.2 3-7 6.6-7 2.8 0 4.7 1.9 4.7 4.2 0 1.9-1.4 3.2-3.1 3.2-1.5 0-2.6-1-2.6-2.4 0-1.1.8-1.9 2-1.9M13.6 12.5c.8-5.6 4.6-9.6 9.6-9.6 3.4 0 5.3 2.3 5.3 4.8' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 15'%3E%3Cpath d='M2 12.5c0-4.2 3-7 6.6-7 2.8 0 4.7 1.9 4.7 4.2 0 1.9-1.4 3.2-3.1 3.2-1.5 0-2.6-1-2.6-2.4 0-1.1.8-1.9 2-1.9M13.6 12.5c.8-5.6 4.6-9.6 9.6-9.6 3.4 0 5.3 2.3 5.3 4.8' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
+h3 { font-weight: 700; font-size: 1.125rem; margin: 0 0 6px; line-height: 1.45; }
+p { margin: 0 0 14px; max-width: 66ch; }
+.lead { font-size: 1.1875rem; color: var(--muted); line-height: 1.75; }
+ul.plain { margin: 0 0 14px; padding-left: 1.1em; max-width: 66ch; }
+ul.plain li { margin-bottom: 6px; }
+ul.plain li::marker { content: "◆  "; color: var(--seal); font-size: 0.6em; }
+.hanja { font-family: var(--display); color: var(--muted); font-weight: 400; }
+.note { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line); outline: 1px solid var(--line-soft); outline-offset: -5px;
+  border-radius: 2px; padding: 18px 20px; min-width: 0;
+}
+.card p:last-child, .card ul:last-child { margin-bottom: 0; }
+.card p { font-size: 0.9688rem; line-height: 1.7; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.wm { position: relative; overflow: hidden; }
+.wm::after {
+  content: attr(data-wm); position: absolute; right: -6px; bottom: -22px; font-family: var(--display);
+  font-size: 5.5rem; line-height: 1; color: var(--seal); opacity: 0.08; pointer-events: none;
+}
+.big-hz { font-family: var(--display); font-size: 2.25rem; line-height: 1; color: var(--jade); margin-bottom: 6px; }
+.tag { display: inline-block; font-size: 0.75rem; line-height: 1.6; padding: 1px 8px; border-radius: 2px; background: var(--jade-soft); color: var(--jade); }
+.tag.red { background: var(--seal); color: var(--seal-ink); }
+.tag.line { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+
+/* ── 표지 ── */
+.hero-frame { padding: 7px; border-radius: 3px; background: linear-gradient(180deg, #5a3a22, #3e2614); box-shadow: 0 4px 14px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,220,170,.25); }
+.hero {
+  position: relative; aspect-ratio: 800 / 330; overflow: hidden; background: #f4ecd6;
+  border: 1px solid rgba(60,40,20,.6);
+}
+.hero::after { content: ""; position: absolute; inset: 4px; border: 1px solid rgba(60,40,20,.3); pointer-events: none; z-index: 2; }
+.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-title {
+  position: absolute; left: 5.5%; top: 14%; display: flex; gap: 16px; align-items: flex-start; color: #2a2018;
+  text-shadow: 0 0 6px #f4ecd6, 0 0 12px #f4ecd6;
+}
+.hero-seal {
+  width: 56px; flex-shrink: 0; padding: 8px 0; text-align: center; background: #b42a1f; color: #f8ecd2;
+  font-family: var(--display); font-size: 1.625rem; line-height: 1.15; border-radius: 3px; transform: rotate(-3deg);
+  box-shadow: inset 0 0 0 3px #b42a1f, inset 0 0 0 4.5px #f8ecd2; text-shadow: none;
+}
+.hero-title h1 { font-size: 3.5rem; line-height: 1.1; letter-spacing: 0.12em; }
+.hero-sub { font-size: 0.9375rem; color: #5c4e40; margin-top: 8px; letter-spacing: 0.06em; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin: 26px 0 6px; font-size: 0.9375rem; }
+.facts div { display: grid; grid-template-columns: 5.2em minmax(0, 1fr); gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+.chapter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.chapter-grid a {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; padding: 14px 16px;
+  background: var(--surface); border: 1px solid var(--line); outline: 1px solid var(--line-soft); outline-offset: -5px;
+  color: var(--ink); text-decoration: none; line-height: 1.4; transition: border-color .2s, transform .2s;
+}
+.chapter-grid a:hover { border-color: var(--seal); transform: translateY(-1px); }
+.chapter-grid .hz { width: 44px; height: 44px; display: grid; place-items: center; font-family: var(--display); font-size: 1.5rem; color: var(--seal-ink); background: var(--seal); border-radius: 3px; }
+.chapter-grid b { font-weight: 600; display: block; }
+.chapter-grid small { display: block; color: var(--muted); font-size: 0.8125rem; margin-top: 2px; }
+
+/* ── 세계 ── */
+.flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1.35fr); gap: 10px; align-items: stretch; margin: 6px 0 4px; }
+.flow .arrow { align-self: center; color: var(--seal); font-size: 1.25rem; }
+.kinds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+.kinds span { text-align: center; padding: 6px 2px; border: 1px solid var(--line); background: var(--paper); font-size: 0.8125rem; line-height: 1.35; }
+.kinds b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.5rem; color: var(--seal); }
+
+.continent { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; margin: 6px 0 4px; }
+.continent .card { text-align: center; }
+.continent .north { grid-column: 1 / -1; background: var(--paper-2); }
+.continent .center { border-color: var(--seal); }
+.continent .south { grid-column: 2; }
+.dir { font-family: var(--display); font-size: 1rem; color: var(--seal); letter-spacing: 0.1em; }
+.continent h3 { margin: 2px 0 6px; }
+.continent p { margin: 0 auto; font-size: 0.9375rem; line-height: 1.6; }
+
+.reach { margin: 4px 0 16px; }
+.reach-bar { height: 8px; border-radius: 4px; background: linear-gradient(90deg, var(--jade) 0%, var(--jade) 28%, var(--gold) 58%, var(--line) 100%); }
+.reach-stops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 10px; font-size: 0.9375rem; line-height: 1.55; }
+.reach-stops b { display: block; font-weight: 700; }
+.reach-stops div:nth-child(2) { text-align: center; }
+.reach-stops div:nth-child(3) { text-align: right; }
+
+.stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); background: var(--surface); margin: 6px 0 4px; }
+.stage { padding: 16px 18px; border-right: 1px solid var(--line); }
+.stage:last-child { border-right: 0; }
+.stage .hz { font-family: var(--display); font-size: 2.5rem; line-height: 1; }
+.stage:nth-child(1) .hz { color: var(--gold); }
+.stage:nth-child(2) .hz { color: var(--seal); opacity: .75; }
+.stage:nth-child(3) .hz { color: var(--seal); }
+.stage .name { font-weight: 700; margin: 8px 0 4px; }
+.stage p { font-size: 0.9375rem; margin: 0 0 10px; line-height: 1.6; }
+
+/* ── 진마사 ── */
+.tree { display: grid; justify-items: center; gap: 0; margin: 6px 0 4px; }
+.tnode { background: var(--surface); border: 1px solid var(--line); padding: 8px 16px; text-align: center; line-height: 1.45; min-width: 0; }
+.tnode small { display: block; color: var(--muted); font-size: 0.8125rem; }
+.tnode.top { background: var(--seal); color: var(--seal-ink); border-color: var(--seal); }
+.tnode.top small { color: var(--seal-ink); opacity: .85; }
+.tnode.king { background: var(--paper-2); }
+.tline { width: 2px; height: 16px; background: var(--gold); }
+.trow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; position: relative; padding-top: 16px; }
+.trow::before { content: ""; position: absolute; top: 0; left: 16.6%; right: 16.6%; height: 2px; background: var(--gold); }
+.trow .tnode { position: relative; }
+.trow .tnode::before { content: ""; position: absolute; top: -16px; left: 50%; width: 2px; height: 16px; background: var(--gold); transform: translateX(-1px); }
+.tout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.tout .tnode { border-style: dashed; background: transparent; }
+.ranks { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 20px 0 10px; font-size: 0.875rem; }
+.ranks span { padding: 2px 10px; border: 1px solid var(--line); background: var(--surface); }
+.ranks i { color: var(--gold); font-style: normal; }
+
+/* ── 지도 ── */
+.map-frame { padding: 7px; border-radius: 3px; background: linear-gradient(180deg, #5a3a22, #3e2614); box-shadow: 0 4px 14px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,220,170,.25); margin: 6px 0 4px; }
+.map-paper {
+  position: relative; color: #2a2018; font-family: var(--body);
+  background:
+    repeating-linear-gradient(17deg, rgba(120,95,60,.04) 0px, rgba(120,95,60,.04) 1px, transparent 1px, transparent 5px),
+    repeating-linear-gradient(-29deg, rgba(255,255,255,.10) 0px, rgba(255,255,255,.10) 1px, transparent 1px, transparent 8px),
+    radial-gradient(ellipse at 50% 45%, rgba(255,250,235,.55), rgba(255,250,235,0) 70%),
+    radial-gradient(ellipse at 100% 100%, rgba(140,100,50,.25), rgba(140,100,50,0) 40%),
+    radial-gradient(ellipse at 0% 0%, rgba(140,100,50,.2), rgba(140,100,50,0) 35%),
+    #efe4c8;
+  border: 1px solid rgba(60,40,20,.6); outline: 1px solid rgba(60,40,20,.3); outline-offset: -5px;
+}
+.map-tabs { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px 4px; }
+.map-tabs .tabs { display: flex; gap: 6px; }
+.map-tabs button {
+  all: unset; cursor: pointer; padding: 4px 12px; border-radius: 3px; border: 1px solid rgba(60,40,20,.35);
+  background: rgba(255,255,255,.35); color: #5c4e40; font-size: 0.8125rem; transition: all .25s;
+}
+.map-tabs button .hz { font-family: var(--display); font-size: 1.0625rem; letter-spacing: 1px; margin-right: 5px; }
+.map-tabs button[aria-pressed="true"] { background: #b42a1f; border-color: #b42a1f; color: #f8ecd2; }
+.map-tabs .city-name { font-family: var(--display); color: #5c4e40; letter-spacing: 3px; font-size: 1rem; }
+.map-scroll { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+.map-inner { min-width: 470px; animation: fade .4s ease-out both; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.mapsvg { display: block; width: 100%; height: auto; }
+.map-hint { font-size: 0.75rem; color: #5c4e40; text-align: right; padding: 2px 14px 0; }
+.map-info { margin: 4px 14px 0; padding: 12px 4px 12px; border-top: 1px solid rgba(60,40,20,.3); display: flex; gap: 12px; align-items: flex-start; min-height: 74px; }
+.map-info .badge { flex-shrink: 0; font-family: var(--display); font-size: 0.875rem; color: #f8ecd2; background: #5c4e40; padding: 2px 8px; border-radius: 2px; margin-top: 3px; }
+.map-info .name { font-family: var(--display); font-size: 1.25rem; line-height: 1.3; }
+.map-info .desc { font-size: 0.9375rem; line-height: 1.65; color: #4a3d30; }
+.map-info .empty { font-size: 0.9375rem; color: #5c4e40; align-self: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 14px; }
+.chips button {
+  all: unset; cursor: pointer; font-size: 0.8125rem; line-height: 1.5; padding: 2px 9px; border-radius: 2px;
+  border: 1px solid rgba(60,40,20,.28); background: rgba(255,255,255,.3); color: #4a3d30;
+}
+.chips button:hover { border-color: #b42a1f; color: #b42a1f; }
+.chips button[aria-pressed="true"] { background: #b42a1f; border-color: #b42a1f; color: #f8ecd2; }
+.chips .grp { width: 100%; font-family: var(--display); font-size: 0.875rem; color: #7a3a2a; letter-spacing: 0.1em; margin-top: 4px; }
+.pin { cursor: pointer; outline: none; }
+.pin text { fill: #2a2018; paint-order: stroke; stroke: #efe4c8; stroke-width: 2.6px; stroke-linejoin: round; transition: fill .2s; }
+.pin .dot { fill: #5c4e40; stroke: #efe4c8; stroke-width: 1; }
+.pin .hit { fill: transparent; }
+.pin .ring { fill: none; stroke: #b42a1f; stroke-width: 1.6; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.pin:hover text, .pin.on text { fill: #b42a1f; }
+.pin.on .dot { fill: #b42a1f; }
+.pin.on .ring { opacity: 1; animation: ping 1.8s ease-out infinite; }
+.pin:focus-visible .hit { stroke: #9a7634; stroke-width: 1; stroke-dasharray: 2 2; }
+.palace-hit { cursor: pointer; fill: transparent; }
+.palace-hit:hover { fill: rgba(180, 42, 31, 0.08); }
+@keyframes ping { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
+
+/* ── 인물 ── */
+.profile { display: grid; gap: 14px; }
+.p-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; margin-bottom: 12px; }
+.medal {
+  width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 1.625rem;
+  color: #f8ecd2; background: #3d6a5b; box-shadow: 0 0 0 3px var(--surface), 0 0 0 4.5px var(--gold);
+}
+.medal.teal { background: #4e6b72; }
+.medal.red { background: var(--seal); }
+.medal.big { width: 84px; height: 84px; font-size: 2.5rem; background: var(--seal); }
+.p-head h3 { font-size: 1.25rem; margin: 0; }
+.p-head .role { font-size: 0.875rem; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+.kv { display: grid; grid-template-columns: 4.2em minmax(0, 1fr); gap: 8px 14px; margin: 0; font-size: 0.9688rem; line-height: 1.7; }
+.kv dt { color: var(--seal); font-family: var(--display); font-size: 1rem; padding-top: 1px; }
+.kv dd { margin: 0; }
+.quote { position: relative; margin: 12px 0 0; padding: 10px 14px 10px 18px; background: var(--paper); border-left: 3px solid var(--seal); font-size: 0.9688rem; line-height: 1.65; }
+.quote-list { display: grid; gap: 8px; }
+.quote-list .quote { margin: 0; }
+.quote-label { font-size: 0.8125rem; color: var(--muted); margin: 4px 0 6px; letter-spacing: 0.08em; }
+
+.bond { display: grid; gap: 8px; margin: 6px 0 4px; }
+.bond-row { display: grid; grid-template-columns: 44px 9.5em minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); }
+.bond-row .hz { width: 40px; height: 40px; border-radius: 3px; transform: rotate(-3deg); display: grid; place-items: center; font-family: var(--display); font-size: 1.375rem; background: var(--seal); color: var(--seal-ink); }
+.bond-row b { font-weight: 700; font-size: 0.9375rem; }
+.bond-row span { font-size: 0.9375rem; line-height: 1.55; }
+
+.rel-wrap { overflow-x: auto; margin: 6px 0 10px; background: var(--surface); border: 1px solid var(--line); outline: 1px solid var(--line-soft); outline-offset: -5px; }
+.rel { display: block; width: 100%; min-width: 560px; height: auto; font-family: var(--body); }
+.rel .node rect { fill: var(--paper); stroke: var(--line); }
+.rel .node.core rect { fill: var(--seal); stroke: var(--seal); }
+.rel .node text { fill: var(--ink); font-size: 14px; font-weight: 700; }
+.rel .node.core text { fill: var(--seal-ink); }
+.rel .node text.sub { font-size: 11px; font-weight: 400; fill: var(--muted); }
+.rel .node.core text.sub { fill: var(--seal-ink); }
+.rel .e { fill: none; stroke-width: 2; }
+.rel .e.good { stroke: var(--jade); }
+.rel .e.bad { stroke: var(--seal); stroke-dasharray: 6 5; }
+.rel .e.kin { stroke: var(--gold); }
+.rel .lbl { font-size: 11.5px; paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.rel .lbl.good { fill: var(--jade); }
+.rel .lbl.bad { fill: var(--seal); }
+.rel .lbl.kin { fill: var(--gold); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.8125rem; color: var(--muted); margin-bottom: 8px; }
+.legend i { display: inline-block; width: 22px; height: 0; border-top: 2px solid; vertical-align: middle; margin-right: 6px; }
+
+/* ── 이전/다음 ── */
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line); }
+.pager button {
+  all: unset; cursor: pointer; display: grid; gap: 2px; padding: 12px 16px; min-width: 0;
+  background: var(--surface); border: 1px solid var(--line); outline: 1px solid var(--line-soft); outline-offset: -5px;
+}
+.pager button:hover { border-color: var(--seal); }
+.pager small { color: var(--muted); font-size: 0.8125rem; }
+.pager span { font-family: var(--display); font-size: 1.125rem; }
+.pager .next { text-align: right; grid-column: 2; }
+.pager button[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter, .map-inner { animation: none; }
+  .pin.on .ring { animation: none; }
+}
+
+@media (max-width: 900px) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 0; }
+  .toc { display: none; position: fixed; inset: 0; z-index: 30; align-self: stretch; background: var(--paper); padding: calc(env(safe-area-inset-top, 0px) + 20px) max(20px, env(safe-area-inset-right, 0px)) 24px max(20px, env(safe-area-inset-left, 0px)); overscroll-behavior: contain; overflow-y: auto; }
+  .toc::before, .toc::after { display: none; }
+  .toc.open { display: block; }
+  .toc-scroll { max-height: none; overflow: visible; }
+  .toc .close {
+    all: unset; display: inline-block; position: absolute; z-index: 2; cursor: pointer; font-size: 0.875rem; padding: 4px 12px; border: 1px solid var(--line); border-radius: 2px; background: var(--paper);
+    top: calc(env(safe-area-inset-top, 0px) + 34px); right: max(32px, env(safe-area-inset-right, 0px));
+  }
+  .toc .brand { padding-right: 70px; }
+  .topbar {
+    display: flex; align-items: center; gap: 10px; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    background: var(--surface); border-bottom: 1px solid var(--line);
+    margin: 0 calc(-1 * max(16px, env(safe-area-inset-right, 0px))) 22px calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+    padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px));
+  }
+  .topbar button { all: unset; cursor: pointer; padding: 4px 12px; border: 1px solid var(--line); border-radius: 2px; font-size: 0.875rem; background: var(--paper); }
+  .topbar .cur { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.9375rem; }
+  .topbar .cur b { font-family: var(--display); font-weight: 400; color: var(--seal); margin-right: 6px; }
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1.0625rem; }
+  .ch-head { background-size: 200px 56px; gap: 16px; }
+  .ch-seal { width: 54px; height: 54px; font-size: 1.875rem; }
+  .hero { aspect-ratio: auto; display: flex; flex-direction: column; }
+  .hero-art { position: relative; inset: auto; height: auto; aspect-ratio: 800 / 330; }
+  .hero-title { order: -1; position: relative; left: auto; top: auto; gap: 12px; padding: 20px 16px 4px; }
+  .hero-seal { width: 42px; font-size: 1.25rem; padding: 6px 0; }
+  .hero-title h1 { font-size: 2.125rem; }
+  .hero-sub { font-size: 0.8125rem; }
+  .grid-2, .grid-3, .facts, .chapter-grid { grid-template-columns: minmax(0, 1fr); }
+  .flow { grid-template-columns: minmax(0, 1fr); }
+  .flow .arrow { transform: rotate(90deg); justify-self: center; line-height: 1; }
+  .continent { grid-template-columns: minmax(0, 1fr); }
+  .continent .north, .continent .south { grid-column: auto; }
+  .stages, .reach-stops { grid-template-columns: minmax(0, 1fr); }
+  .stage { border-right: 0; border-bottom: 1px solid var(--line); }
+  .stage:last-child { border-bottom: 0; }
+  .reach-stops div:nth-child(n) { text-align: left; }
+  .kv { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .kv dd { margin-bottom: 10px; }
+  .bond-row { grid-template-columns: 44px minmax(0, 1fr); }
+  .bond-row span { grid-column: 1 / -1; }
+  .tnode { padding: 8px 8px; font-size: 0.875rem; }
+  .card { padding: 16px 16px; }
+  .map-tabs { padding: 10px 10px 4px; }
+  .map-info, .chips { margin-left: 10px; margin-right: 10px; padding-left: 0; padding-right: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <nav class="toc" id="toc" aria-label="목차">
+    <button class="close" type="button" id="tocClose">닫기</button>
+    <div class="toc-scroll">
+      <div class="brand">
+        <div class="brand-seal">了<br>玄</div>
+        <div>
+          <div class="brand-name">歸墟異錄</div>
+          <div class="brand-sub">귀허이록 · 요현 안내서</div>
+        </div>
+      </div>
+      <a href="#home" data-go="home"><span class="hz">卷</span>펼치며</a>
+      <div class="toc-group-title">세계관</div>
+      <a href="#world" data-go="world"><span class="hz">墟</span>세계와 재앙</a>
+      <a href="#art" data-go="art"><span class="hz">氣</span>퇴마와 오염</a>
+      <a href="#org" data-go="org"><span class="hz">司</span>진마사</a>
+      <div class="toc-group-title">지리</div>
+      <a href="#lands" data-go="lands"><span class="hz">界</span>대륙과 나라</a>
+      <a href="#map" data-go="map"><span class="hz">圖</span>운경 지도</a>
+      <div class="toc-group-title">인물</div>
+      <a href="#yohyeon" data-go="yohyeon"><span class="hz">玄</span>요현</a>
+      <a href="#cast" data-go="cast"><span class="hz">人</span>주변 인물</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="topbar">
+      <button type="button" id="tocOpen" aria-controls="toc">목차</button>
+      <div class="cur" id="cur"><b>卷</b>펼치며</div>
+    </div>
+
+    <!-- 표지 -->
+    <section class="chapter" data-id="home" data-title="펼치며" data-hz="卷">
+      <div class="hero-frame">
+        <div class="hero">
+          <svg class="hero-art" viewBox="0 0 800 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="안개 낀 산수와 붉은 해">
+<defs>
+<linearGradient id="hSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4ecd6"/><stop offset="1" stop-color="#e7d8b2"/></linearGradient>
+<linearGradient id="hMtn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d8a7a"/><stop offset="1" stop-color="#9fb98f"/></linearGradient>
+<linearGradient id="hNear" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3e5a50"/><stop offset="1" stop-color="#6f9583"/></linearGradient>
+<linearGradient id="hMist" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4ecd6" stop-opacity="0"/><stop offset=".5" stop-color="#f4ecd6" stop-opacity=".92"/><stop offset="1" stop-color="#f4ecd6" stop-opacity="0"/></linearGradient>
+<linearGradient id="hRiver" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8fb3bd"/><stop offset="1" stop-color="#a9c7cc"/></linearGradient>
+</defs>
+<rect width="800" height="330" fill="url(#hSky)"/>
+<circle cx="640" cy="78" r="34" fill="#b42a1f" opacity=".88"/>
+<path d="M560 58 l6 -4 l6 4 M584 44 l5 -3 l5 3 M548 74 l4 -3 l4 3" fill="none" stroke="#5c4e40" stroke-width="1.3" stroke-linecap="round"/>
+<g transform="translate(470 88) scale(1.1)" fill="#fbf6e8" stroke="#c4a266" stroke-width="1.1"><path d="M-38 6 Q-40 -6 -26 -8 Q-24 -20 -10 -18 Q-2 -28 12 -20 Q26 -24 28 -10 Q42 -8 38 6 Z"/><path d="M-20 -2 q4 -8 12 -4 q2 -6 10 -2" fill="none"/><path d="M10 -6 q6 -6 12 0" fill="none"/></g><g transform="translate(735 140) scale(0.8)" fill="#fbf6e8" stroke="#c4a266" stroke-width="1.1"><path d="M-38 6 Q-40 -6 -26 -8 Q-24 -20 -10 -18 Q-2 -28 12 -20 Q26 -24 28 -10 Q42 -8 38 6 Z"/><path d="M-20 -2 q4 -8 12 -4 q2 -6 10 -2" fill="none"/><path d="M10 -6 q6 -6 12 0" fill="none"/></g>
+<path d="M260.0 240 Q305.5 175.6 330.0 170.0 Q354.5 175.6 400.0 240 Z" fill="#9fb98f" stroke="#6d8f78" stroke-width="0.8" opacity="0.45"/><path d="M340.0 240 Q392.0 152.6 420.0 145.0 Q448.0 152.6 500.0 240 Z" fill="#9fb98f" stroke="#6d8f78" stroke-width="0.8" opacity="0.45"/><path d="M445.0 240 Q493.8 166.4 520.0 160.0 Q546.2 166.4 595.0 240 Z" fill="#9fb98f" stroke="#6d8f78" stroke-width="0.8" opacity="0.45"/><path d="M525.0 240 Q580.2 138.8 610.0 130.0 Q639.8 138.8 695.0 240 Z" fill="#9fb98f" stroke="#6d8f78" stroke-width="0.8" opacity="0.45"/><path d="M640.0 240 Q692.0 157.2 720.0 150.0 Q748.0 157.2 800.0 240 Z" fill="#9fb98f" stroke="#6d8f78" stroke-width="0.8" opacity="0.45"/><path d="M740.0 240 Q779.0 175.6 800.0 170.0 Q821.0 175.6 860.0 240 Z" fill="#9fb98f" stroke="#6d8f78" stroke-width="0.8" opacity="0.45"/>
+<rect x="0" y="200" width="800" height="60" fill="url(#hMist)"/>
+<path d="M320.0 270 Q359.0 205.6 380.0 200.0 Q401.0 205.6 440.0 270 Z" fill="url(#hMtn)" stroke="#3e5a50" stroke-width="1" opacity="0.95"/><path d="M380.0 200.0 Q371.0 235.0 354.8 270" fill="none" stroke="#3e5a50" stroke-width="0.60" opacity="0.47"/><path d="M386.0 212.6 Q393.2 238.5 410.0 270" fill="none" stroke="#3e5a50" stroke-width="0.50" opacity="0.33"/><path d="M375.0 204.0 q5 -4 10 0" fill="none" stroke="#f3ecd6" stroke-width="1.4" opacity=".75"/><path d="M400.0 270 Q445.5 173.4 470.0 165.0 Q494.5 173.4 540.0 270 Z" fill="url(#hMtn)" stroke="#3e5a50" stroke-width="1" opacity="0.95"/><path d="M470.0 165.0 Q459.5 217.5 440.6 270" fill="none" stroke="#3e5a50" stroke-width="0.60" opacity="0.47"/><path d="M477.0 183.9 Q485.4 222.8 505.0 270" fill="none" stroke="#3e5a50" stroke-width="0.50" opacity="0.33"/><path d="M465.0 169.0 q5 -4 10 0" fill="none" stroke="#f3ecd6" stroke-width="1.4" opacity=".75"/><path d="M498.0 270 Q538.3 191.8 560.0 185.0 Q581.7 191.8 622.0 270 Z" fill="url(#hMtn)" stroke="#3e5a50" stroke-width="1" opacity="0.95"/><path d="M560.0 185.0 Q550.7 227.5 534.0 270" fill="none" stroke="#3e5a50" stroke-width="0.60" opacity="0.47"/><path d="M566.2 200.3 Q573.6 231.8 591.0 270" fill="none" stroke="#3e5a50" stroke-width="0.50" opacity="0.33"/><path d="M555.0 189.0 q5 -4 10 0" fill="none" stroke="#f3ecd6" stroke-width="1.4" opacity=".75"/><path d="M582.0 270 Q632.7 141.2 660.0 130.0 Q687.3 141.2 738.0 270 Z" fill="url(#hMtn)" stroke="#3e5a50" stroke-width="1" opacity="0.95"/><path d="M660.0 130.0 Q648.3 200.0 627.2 270" fill="none" stroke="#3e5a50" stroke-width="0.60" opacity="0.47"/><path d="M667.8 155.2 Q677.2 207.0 699.0 270" fill="none" stroke="#3e5a50" stroke-width="0.50" opacity="0.33"/><path d="M655.0 134.0 q5 -4 10 0" fill="none" stroke="#f3ecd6" stroke-width="1.4" opacity=".75"/><path d="M688.0 270 Q734.8 168.8 760.0 160.0 Q785.2 168.8 832.0 270 Z" fill="url(#hMtn)" stroke="#3e5a50" stroke-width="1" opacity="0.95"/><path d="M760.0 160.0 Q749.2 215.0 729.8 270" fill="none" stroke="#3e5a50" stroke-width="0.60" opacity="0.47"/><path d="M767.2 179.8 Q775.8 220.5 796.0 270" fill="none" stroke="#3e5a50" stroke-width="0.50" opacity="0.33"/><path d="M755.0 164.0 q5 -4 10 0" fill="none" stroke="#f3ecd6" stroke-width="1.4" opacity=".75"/>
+<g transform="translate(660 136)" opacity=".95"><path d="M-6 0 h12 M-5 -6 h10 M-4 -12 h8" stroke="#4a3a2a" stroke-width="1.6"/><path d="M0 -12 v-6" stroke="#4a3a2a" stroke-width="1.1"/><rect x="-3" y="-12" width="6" height="12" fill="#b8a888"/></g>
+<rect x="0" y="246" width="800" height="50" fill="url(#hMist)"/>
+<path d="M0 300 C 120 292 220 306 340 300 S 560 290 640 296 S 760 304 800 298" fill="none" stroke="url(#hRiver)" stroke-width="12" stroke-linecap="round"/>
+<path d="M0 300 C 120 292 220 306 340 300 S 560 290 640 296 S 760 304 800 298" fill="none" stroke="#d3e4e4" stroke-width="2.6" stroke-dasharray="6 9" opacity=".8"/>
+<path d="M-90.0 330 Q-31.5 274.8 0.0 270.0 Q31.5 274.8 90.0 330 Z" fill="url(#hNear)" stroke="#2e4a40" stroke-width="1.1" opacity="1"/><path d="M0.0 270.0 Q-13.5 300.0 -37.8 330" fill="none" stroke="#2e4a40" stroke-width="0.66" opacity="0.50"/><path d="M9.0 280.8 Q19.8 303.0 45.0 330" fill="none" stroke="#2e4a40" stroke-width="0.55" opacity="0.35"/><path d="M70.0 330 Q122.0 293.2 150.0 290.0 Q178.0 293.2 230.0 330 Z" fill="url(#hNear)" stroke="#2e4a40" stroke-width="1.1" opacity="1"/><path d="M150.0 290.0 Q138.0 310.0 116.4 330" fill="none" stroke="#2e4a40" stroke-width="0.66" opacity="0.50"/><path d="M158.0 297.2 Q167.6 312.0 190.0 330" fill="none" stroke="#2e4a40" stroke-width="0.55" opacity="0.35"/><path d="M430.0 330 Q488.5 274.8 520.0 270.0 Q551.5 274.8 610.0 330 Z" fill="url(#hNear)" stroke="#2e4a40" stroke-width="1.1" opacity="1"/><path d="M520.0 270.0 Q506.5 300.0 482.2 330" fill="none" stroke="#2e4a40" stroke-width="0.66" opacity="0.50"/><path d="M529.0 280.8 Q539.8 303.0 565.0 330" fill="none" stroke="#2e4a40" stroke-width="0.55" opacity="0.35"/><path d="M540.0 330 Q605.0 242.6 640.0 235.0 Q675.0 242.6 740.0 330 Z" fill="url(#hNear)" stroke="#2e4a40" stroke-width="1.1" opacity="1"/><path d="M640.0 235.0 Q625.0 282.5 598.0 330" fill="none" stroke="#2e4a40" stroke-width="0.66" opacity="0.50"/><path d="M650.0 252.1 Q662.0 287.2 690.0 330" fill="none" stroke="#2e4a40" stroke-width="0.55" opacity="0.35"/><path d="M690.0 330 Q748.5 219.6 780.0 210.0 Q811.5 219.6 870.0 330 Z" fill="url(#hNear)" stroke="#2e4a40" stroke-width="1.1" opacity="1"/><path d="M780.0 210.0 Q766.5 270.0 742.2 330" fill="none" stroke="#2e4a40" stroke-width="0.66" opacity="0.50"/><path d="M789.0 231.6 Q799.8 276.0 825.0 330" fill="none" stroke="#2e4a40" stroke-width="0.55" opacity="0.35"/>
+</svg>
+          <div class="hero-title">
+            <div class="hero-seal">了<br>玄</div>
+            <div>
+              <h1>歸墟異錄</h1>
+              <div class="hero-sub">귀허이록 · 요현과 함께하는 동양풍 퇴마 롤플레이 안내서</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <dl class="facts">
+        <div><dt>장르</dt><dd>동양풍 퇴마물, 로맨스</dd></div>
+        <div><dt>시대감</dt><dd>조선 후기·청·에도 초기 무렵</dd></div>
+        <div><dt>무대</dt><dd>운화국 수도 운경, 왕궁 서원</dd></div>
+        <div><dt>사건</dt><dd>수도 곳곳에 열리는 결계 틈</dd></div>
+        <div><dt>상대</dt><dd>요현, 진마사 임시 총령</dd></div>
+        <div><dt>당신</dt><dd>신분과 관계는 시작 장면에 따라</dd></div>
+      </dl>
+      <h2>차례</h2>
+      <div class="chapter-grid" id="chapterGrid"></div>
+    </section>
+
+    <!-- 세계와 재앙 -->
+    <section class="chapter" data-id="world" data-title="세계와 재앙" data-hz="墟" hidden>
+      <div class="ch-head"><div class="ch-seal">墟</div><div><div class="eyebrow">세계관 · 一</div><h1>세계와 재앙</h1></div></div>
+      <p class="lead">모든 재앙은 대륙 북쪽 끝의 심연에서 시작된다. 그곳에서 새어 나온 힘이 산 것에 스며들면, 그것은 더 이상 산 것이 아니게 된다.</p>
+      <div class="flow">
+        <div class="card wm" data-wm="歸"><h3>귀허 <span class="hanja">歸墟</span></h3><p>대륙 북쪽 끝의 바닥 없는 심연. 모든 죽음과 소멸이 흘러가 고인다. 들어간 자는 돌아오지 못한다.</p></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="card wm" data-wm="濁"><h3>탁기 <span class="hanja">濁氣</span></h3><p>귀허에서 새어 나온 소멸의 힘. 생기를 갉아먹으며 산 것에 쉽게 옮겨 붙는다.</p></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="card"><h3>이형 <span class="hanja">異形</span></h3><p>탁기에 물들어 뒤틀린 것. 무엇이 물들었는지에 따라 셋으로 나뉜다.</p>
+          <div class="kinds"><span><b>妖</b>요 · 짐승</span><span><b>鬼</b>귀 · 사람과 망자</span><span><b>怪</b>괴 · 오래된 사물</span></div>
+        </div>
+      </div>
+
+      <h2>지금의 운화국</h2>
+      <ul class="plain">
+        <li>운화국은 귀허에서 가장 멀어 이형이 드문, 대륙에서 가장 크고 안정된 나라였다.</li>
+        <li>그런데 최근 나라 곳곳에 결계 틈이 무작위로 열리고 있다. 원인은 아무도 모른다.</li>
+        <li>이형을 상대해 본 경험이 부족한 조정은 북쪽 최전선에서 지휘관을 불러들였다. 그가 요현이다.</li>
+      </ul>
+
+      <h2>전음부 <span class="hanja" style="font-size:.8em">傳音符</span></h2>
+      <div class="card">
+        <p>진마사가 쓰는 짝지은 부적. 한쪽에 생기를 담아 글을 쓰면 짝 부적에 글자가 떠오른다. 여럿이 짝을 맞추면 단체 대화도 된다. 견기가 없어도 쓸 수 있지만, 오래 쓰면 피로해진다. 결계 틈 근처에서는 글자가 흐려지거나 끊긴다.</p>
+      </div>
+    </section>
+
+    <!-- 퇴마와 오염 -->
+    <section class="chapter" data-id="art" data-title="퇴마와 오염" data-hz="氣" hidden>
+      <div class="ch-head"><div class="ch-seal">氣</div><div><div class="eyebrow">세계관 · 二</div><h1>퇴마와 오염</h1></div></div>
+      <p class="lead">퇴마란 자신의 생기를 끌어내 탁기를 태우거나 끊어내는 일이다. 쓸수록 생기가 비고, 빈자리로 탁기가 스며든다. 무리하면 퇴마사 자신이 이형이 된다.</p>
+      <div class="grid-2">
+        <div class="card"><h3>견기 <span class="hanja">見氣</span></h3><p>탁기를 보는 눈. 타고나야만 하며, 오천 명에 한 명꼴로 드물다. 견기가 없으면 이형을 감지할 수 없다.</p></div>
+        <div class="card"><h3>술법</h3><p>부적, 진언, 방울, 무구에 생기를 실어 쓴다. 수련으로 익히지만, 신내림과 신과의 계약은 타고난 자질이 따로 필요하다.</p></div>
+      </div>
+
+      <h2>생기의 거리</h2>
+      <p>퇴마의 힘은 사람의 몸에서 나온다. 몸에서 멀어질수록 힘을 잃는다. 그래서 퇴마사는 결국 이형에게 가까이 다가가야 한다.</p>
+      <div class="reach">
+        <div class="reach-bar" aria-hidden="true"></div>
+        <div class="reach-stops">
+          <div><b>손에 쥔 무기</b>검, 창, 석장. 생기가 온전히 실린다.</div>
+          <div><b>손을 떠난 것</b>화살, 던진 부적. 가까이서만 약하게 통한다.</div>
+          <div><b>화약 무기</b>생기가 거의 실리지 않는다. 이형에겐 소용없다.</div>
+        </div>
+      </div>
+
+      <h2>퇴마의 네 계통</h2>
+      <div class="grid-4">
+        <div class="card"><div class="big-hz">佛</div><h3>불문</h3><p>진언, 염주, 석장. 결계 유지에 강하다. 요현의 계통.</p></div>
+        <div class="card"><div class="big-hz">巫</div><h3>무가</h3><p>신내림, 방울, 춤. 신을 몸에 받는다.</p></div>
+        <div class="card"><div class="big-hz">道</div><h3>도가</h3><p>부적, 주술, 검. 운화국의 주류.</p></div>
+        <div class="card"><div class="big-hz">神</div><h3>신대</h3><p>한 신과 평생 계약해 힘을 빌린다. 서쪽 적원의 주류.</p></div>
+      </div>
+
+      <h2>오염의 세 단계</h2>
+      <div class="stages">
+        <div class="stage"><div class="hz">侵</div><div class="name">침 · 스며듦</div><p>탁기가 스며들기 시작한 상태.</p><span class="tag">정화로 되돌릴 수 있음</span></div>
+        <div class="stage"><div class="hz">變</div><div class="name">변 · 뒤틀림</div><p>형체가 뒤틀리기 시작한 상태.</p><span class="tag line">되돌리기 어려움</span></div>
+        <div class="stage"><div class="hz">化</div><div class="name">화 · 이형이 됨</div><p>완전히 이형이 된 상태.</p><span class="tag red">처단만 가능</span></div>
+      </div>
+
+      <h2>정화</h2>
+      <div class="grid-3">
+        <div class="card"><h3>쉬기</h3><p>가벼운 오염은 먹고, 자고, 쉬면 생기가 차올라 저절로 밀려난다.</p></div>
+        <div class="card"><h3>현장 정화</h3><p>다른 사람이 몸을 맞대고 생기를 흘려 넣어 탁기를 밀어낸다. 오염이 심할수록 더 넓은 접촉이 필요하다.</p></div>
+        <div class="card"><h3>의식 정화</h3><p>사찰, 사당, 도관 같은 정화소에서 천천히 탁기를 빼낸다. 오래 걸리지만 안전하다.</p></div>
+      </div>
+      <p class="note" style="margin-top:14px">퇴마사가 혼자 다니지 않는 가장 큰 이유가 현장 정화다. 서로의 오염을 살피고 씻어 줄 사람이 곁에 있어야 한다.</p>
+    </section>
+
+    <!-- 진마사 -->
+    <section class="chapter" data-id="org" data-title="진마사" data-hz="司" hidden>
+      <div class="ch-head"><div class="ch-seal">司</div><div><div class="eyebrow">세계관 · 三</div><h1>진마사 <span class="hanja">鎭魔司</span></h1></div></div>
+      <p class="lead">운화국의 공인 퇴마 관청. 소속 퇴마사는 국가 무관으로, 명령 체계를 따르는 대신 봉급과 신분을 보장받는다. 견기가 없는 사람도 부적 제작, 결계 관리, 후송을 맡는 지원 인력으로 일한다.</p>
+
+      <div class="tree">
+        <div class="tnode king">왕<small>운화국</small></div>
+        <div class="tline"></div>
+        <div class="tnode top">임시 총령 · 요현<small>부관 류서진</small></div>
+        <div class="tline"></div>
+        <div class="tnode">진마사령 · 권문혁</div>
+        <div class="tline"></div>
+        <div class="trow">
+          <div class="tnode">경위대<small>왕궁 · 윤세광</small></div>
+          <div class="tnode">주진대<small>각 지방</small></div>
+          <div class="tnode">감찰대<small>균열 조사 · 남궁휘</small></div>
+        </div>
+        <div class="tout">
+          <div class="tnode">수계군<small>진마사 바깥 · 북쪽 최전선</small></div>
+          <div class="tnode">떠돌이 퇴마사<small>진마사 바깥 · 비공인</small></div>
+        </div>
+      </div>
+      <div class="ranks" aria-label="직위 순서"><span>임시 총령</span><i>›</i><span>진마사령</span><i>›</i><span>진관</span><i>›</i><span>진위</span><i>›</i><span>진졸</span></div>
+      <p class="note">임시 총령은 균열 사태를 수습하려고 새로 만든 자리로, 진마사령보다 위다. 현장의 신입은 대개 진졸로 시작한다.</p>
+
+      <h2>세 부대</h2>
+      <div class="grid-3">
+        <div class="card"><h3>경위대 <span class="hanja">京衛隊</span></h3><p>왕궁과 왕실을 지킨다. 명문가 자제가 많고 격식과 체면을 중시한다. 은실 문양을 수놓은 화려한 무복 때문에 ‘궁궐 장식’이라 놀림받는다.</p></div>
+        <div class="card"><h3>주진대 <span class="hanja">州鎭隊</span></h3><p>각 지방에 흩어져 마을 결계와 약한 이형을 맡는다. 인원이 가장 많고 실력 차가 크다.</p></div>
+        <div class="card"><h3>감찰대 <span class="hanja">監察隊</span></h3><p>결계 틈의 원인을 쫓고 큰 이형을 토벌한다. 가장 위험하고 가장 활기차다. 경위대와는 앙숙.</p></div>
+      </div>
+
+      <h2>진마사 바깥</h2>
+      <div class="grid-2">
+        <div class="card"><h3>수계군 <span class="hanja">守界軍</span></h3><p>북쪽 국경의 만리결계를 지키는 국제 조직. 출신을 묻지 않고 실력과 생존만으로 평가한다. 대륙에서 사망률이 가장 높다. 요현이 몸담았던 곳이다.</p></div>
+        <div class="card"><h3>떠돌이 퇴마사</h3><p>어느 조직에도 속하지 않고 개인 의뢰로 먹고사는 퇴마사. 불법은 아니지만 공적 권한이 없다. 남문객주에 모인다.</p></div>
+      </div>
+    </section>
+
+    <!-- 대륙과 나라 -->
+    <section class="chapter" data-id="lands" data-title="대륙과 나라" data-hz="界" hidden>
+      <div class="ch-head"><div class="ch-seal">界</div><div><div class="eyebrow">지리 · 一</div><h1>대륙과 나라</h1></div></div>
+      <p class="lead">북쪽 국경 전체를 거대한 결계가 가로막고, 그 아래에서 대륙의 모든 나라가 함께 귀허를 막는다.</p>
+      <div class="continent">
+        <div class="card north"><div class="dir">北</div><h3>만리결계와 수계령 <span class="hanja">萬里結界 · 守界領</span></h3><p>귀허와 대륙을 가르는 결계선과 그 아래의 요새 지대. 어느 나라에도 속하지 않고 모든 나라가 사람과 물자를 보내 지킨다. 이형이 가장 자주 나오는 최전선.</p></div>
+        <div class="card"><div class="dir">西</div><h3>적원 <span class="hanja">赤原</span></h3><p>서쪽 초원의 유목 부족 연합. 하늘, 산, 짐승의 신과 계약하는 신대가 주류.</p></div>
+        <div class="card center"><div class="dir">中</div><h3>운화국 <span class="hanja">雲和國</span></h3><p>대륙 중앙의 왕조 국가. 가장 크고 안정된 나라로, 도가가 주류. 마을마다 신목이나 결계석이 있다.</p></div>
+        <div class="card"><div class="dir">東</div><h3>요주 <span class="hanja">瑤洲</span></h3><p>바다 건너 섬나라. 곳곳에 사당이 있고 무가가 주류.</p></div>
+        <div class="card south"><div class="dir">南</div><h3>남려 <span class="hanja">南黎</span></h3><p>남쪽 열대의 해상 무역국. 여러 퇴마 계통이 섞였고 독과 주술이 발달했다.</p></div>
+      </div>
+    </section>
+
+    <!-- 운경 지도 -->
+    <section class="chapter" data-id="map" data-title="운경 지도" data-hz="圖" hidden>
+      <div class="ch-head"><div class="ch-seal">圖</div><div><div class="eyebrow">지리 · 二</div><h1>운경 지도 <span class="hanja">雲京</span></h1></div></div>
+      <p class="lead">운화국의 수도. 북쪽으로 운봉산을 등지고 남쪽으로 청하가 감싸 흐르는, 인구 약 30만의 성곽 도시다. 지도에서 장소를 누르면 설명이 나온다.</p>
+
+      <div class="map-frame" id="mapWidget">
+        <div class="map-paper">
+          <div class="map-tabs">
+            <div class="tabs" role="group" aria-label="지도 고르기">
+              <button type="button" data-sheet="city" aria-pressed="true"><span class="hz">都城圖</span>도성</button>
+              <button type="button" data-sheet="palace" aria-pressed="false"><span class="hz">王宮圖</span>왕궁</button>
+            </div>
+            <div class="city-name">雲京</div>
+          </div>
+          <div class="map-scroll" id="mapScroll"><div class="map-inner" id="mapInner"></div></div>
+          <div class="map-hint" id="mapHint" hidden>← 옆으로 밀어서 보기 →</div>
+          <div class="map-info" id="mapInfo" aria-live="polite"></div>
+          <div class="chips" id="mapChips"></div>
+        </div>
+      </div>
+
+      <h2>도성에서 알아둘 것</h2>
+      <div class="grid-2">
+        <div class="card"><h3>도성의 결계</h3><p>네 대문 아래 대결계석이 하나씩, 왕궁 깊은 곳에 중심 결계석이 하나 있다. 이 다섯이 도성 전체를 감싼다. 최근 그 사이사이로 틈이 열리고 있다.</p></div>
+        <div class="card"><h3>통금</h3><p>저녁 종이 울리면 통금이 시작되고 새벽 종에 풀린다. 밤에는 순라꾼이 돈다. 진마사 퇴마사는 통금에서 예외다.</p></div>
+        <div class="card"><h3>요즘 민심</h3><p>결계 틈 소문에 집집마다 문에 부적을 붙이고, 밤거리가 한산해졌다. 백성들은 퇴마사를 두려워하면서도 의지한다.</p></div>
+        <div class="card"><h3>새 총령에 대한 소문</h3><p>궁 안팎에서 ‘북쪽 끝에서 온 무서운 중’이라는 말이 돈다. 궁의 관리들은 진마사를 ‘예산 먹는 부서’로 여기기도 한다.</p></div>
+      </div>
+    </section>
+
+    <!-- 요현 -->
+    <section class="chapter" data-id="yohyeon" data-title="요현" data-hz="玄" hidden>
+      <div class="ch-head"><div class="ch-seal">玄</div><div><div class="eyebrow">인물 · 一</div><h1>요현 혜관 <span class="hanja">了玄 慧寬</span></h1></div></div>
+      <div class="card">
+        <div class="p-head">
+          <div class="medal big">玄</div>
+          <div><h3>요현</h3><div class="role">불문 승려 · 진마사 임시 총령 · 30대 초중반 남성</div></div>
+        </div>
+        <p>북쪽 수계군 최고 지휘관의 오른팔이자 차기 지휘관으로 꼽히던 인물. 결계 틈 사태를 수습하라는 명을 받고 수도로 불려 왔다. 본인은 이 발령이 썩 내키지 않는다.</p>
+        <dl class="kv">
+          <dt>외모</dt><dd>183cm의 길고 늘씬한 체격에 자세가 늘 올곧다. 민머리, 차분한 눈매, 짙은 눈썹, 검은 눈동자. 단정하지만 보기만 해도 빡빡해 보이는 차가운 미남.</dd>
+          <dt>차림</dt><dd>승복 계열의 옷에 진마사 표식. 석장과 염주를 지닌다.</dd>
+          <dt>성격</dt><dd>무뚝뚝한 원리원칙주의자. 규칙대로 움직이고 업무 윤리가 투철해서, 부하들에게는 피곤하지만 그만큼 유능하다. 여색에는 거의 관심이 없다.</dd>
+          <dt>의외로</dt><dd>아이들에게 다정하게 대하려 애쓰지만, 아이들은 그를 무서워한다.</dd>
+          <dt>취향</dt><dd>탕에 오래 몸을 담그고 생각에 잠기는 시간. 좋은 술을 취하지 않을 만큼만 음미하기.</dd>
+        </dl>
+      </div>
+
+      <h2>싸우는 법</h2>
+      <ul class="plain">
+        <li>불문 계통의 근접 돌격형. 석장으로 치고 염주로 막으며 진언을 쓴다. 맨몸 무술에도 능하다.</li>
+        <li>지휘도 하지만, 맨 앞에서 돌격할 때 가장 강하다.</li>
+        <li>냉철한 전략가이면서도, 제 몸으로 막을 수 있으면 주저 없이 몸을 던진다.</li>
+      </ul>
+
+      <h2>말투</h2>
+      <p>말수가 적고 짧게 끊어 말한다. 아랫사람에게는 건조한 사극 반말, 윗사람에게는 격식을 갖춘 사극 존댓말을 쓰되 할 말은 반드시 한다.</p>
+      <div class="grid-2">
+        <div>
+          <div class="quote-label">아랫사람에게</div>
+          <div class="quote-list">
+            <p class="quote">“내일도 훈련을 빼먹고 도망갈 생각은 아니겠지. 당장 침소로 돌아가도록.”</p>
+            <p class="quote">“들어가 있거라. 신경 쓰이게 앞에서 알짱거리지 말고.”</p>
+          </div>
+        </div>
+        <div>
+          <div class="quote-label">윗사람에게</div>
+          <div class="quote-list">
+            <p class="quote">“그 지역으로는 함부로 파견하지 않는 편이 좋다 사료됩니다만.”</p>
+            <p class="quote">“정녕 귀한 퇴마사들을 전부 잃고 싶으신 것입니까.”</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>관계 단계</h2>
+      <p>요현이 당신을 어떻게 여기는지는 다섯 단계로 나뉜다. 의미 있는 일이 쌓일 때 한 단계씩 깊어지며, 시작 장면에 따라 이미 가까운 사이에서 출발하기도 한다. 관계를 해치는 일이 있으면 내려갈 수도 있다. 전투 중에는 단계와 상관없이 전우로 대한다.</p>
+      <div class="bond">
+        <div class="bond-row"><div class="hz">公</div><b>一 · 업무 상대</b><span>무뚝뚝하지만, 무심한 배려가 한 조각씩 새어 나온다.</span></div>
+        <div class="bond-row"><div class="hz">識</div><b>二 · 눈에 밟히는 자</b><span>시선이 머물고, 핑계를 만들어 곁에 둔다.</span></div>
+        <div class="bond-row"><div class="hz">許</div><b>三 · 곁을 허락한 자</b><span>사적인 시간을 함께하고, 짧은 농담을 건넨다.</span></div>
+        <div class="bond-row"><div class="hz">傾</div><b>四 · 마음이 기운 자</b><span>감정을 자각하고 당황한다. 거리를 두려다 실패한다.</span></div>
+        <div class="bond-row"><div class="hz">緣</div><b>五 · 정인</b><span>남들 앞에서는 선을 지키고, 단둘일 때는 먼저 다가간다.</span></div>
+      </div>
+    </section>
+
+    <!-- 주변 인물 -->
+    <section class="chapter" data-id="cast" data-title="주변 인물" data-hz="人" hidden>
+      <div class="ch-head"><div class="ch-seal">人</div><div><div class="eyebrow">인물 · 二</div><h1>주변 인물</h1></div></div>
+      <p class="lead">진마사와 궁 안에서 요현과 얽힌 사람들. 주변 인물과는 연애 관계로 발전하지 않는다.</p>
+
+      <div class="rel-wrap">
+        <svg class="rel" viewBox="0 0 620 400" role="img" aria-label="요현과 주변 인물의 관계도">
+          <path class="e kin" d="M310 68 V168" />
+          <path class="e good" d="M260 186 L160 106" />
+          <path class="e good" d="M260 212 L160 284" />
+          <path class="e good" d="M360 186 L460 106" />
+          <path class="e bad" d="M360 202 L460 222" />
+          <path class="e bad" d="M360 218 L460 332" />
+          <path class="e bad" d="M520 276 V308" />
+          <text class="lbl kin" x="320" y="122">옛 상관</text>
+          <text class="lbl bad" x="530" y="297">앙숙</text>
+          <g class="node core"><rect x="260" y="168" width="100" height="56" rx="3"></rect><text x="310" y="194" text-anchor="middle">요현</text><text class="sub" x="310" y="212" text-anchor="middle">임시 총령</text></g>
+          <g class="node"><rect x="225" y="14" width="170" height="54" rx="3"></rect><text x="310" y="38" text-anchor="middle">수계군 최고 지휘관</text><text class="sub" x="310" y="56" text-anchor="middle">북쪽에서 서신을 보낸다</text></g>
+          <g class="node"><rect x="40" y="80" width="120" height="54" rx="3"></rect><text x="100" y="104" text-anchor="middle">류서진</text><text class="sub" x="100" y="122" text-anchor="middle">부관</text></g>
+          <text class="lbl good" x="100" y="152" text-anchor="middle">곁에서 일을 도맡는다</text>
+          <g class="node"><rect x="40" y="258" width="120" height="54" rx="3"></rect><text x="100" y="282" text-anchor="middle">주아령</text><text class="sub" x="100" y="300" text-anchor="middle">진졸</text></g>
+          <text class="lbl good" x="100" y="330" text-anchor="middle">옛 부하, ‘대장’이라 부름</text>
+          <g class="node"><rect x="460" y="80" width="120" height="54" rx="3"></rect><text x="520" y="104" text-anchor="middle">남궁휘</text><text class="sub" x="520" y="122" text-anchor="middle">감찰대 진관</text></g>
+          <text class="lbl good" x="520" y="152" text-anchor="middle">말이 통하는 몇 안 되는 사이</text>
+          <g class="node"><rect x="460" y="196" width="120" height="54" rx="3"></rect><text x="520" y="220" text-anchor="middle">권문혁</text><text class="sub" x="520" y="238" text-anchor="middle">진마사령</text></g>
+          <text class="lbl bad" x="520" y="268" text-anchor="middle">윗자리를 못마땅해함</text>
+          <g class="node"><rect x="460" y="308" width="120" height="54" rx="3"></rect><text x="520" y="332" text-anchor="middle">윤세광</text><text class="sub" x="520" y="350" text-anchor="middle">경위대장</text></g>
+          <text class="lbl bad" x="520" y="380" text-anchor="middle">변경 출신이라 업신여김</text>
+        </svg>
+      </div>
+      <div class="legend"><span><i style="border-color:var(--jade)"></i>가까운 사이</span><span><i style="border-color:var(--seal);border-top-style:dashed"></i>날 선 사이</span><span><i style="border-color:var(--gold)"></i>옛 인연</span></div>
+
+      <div class="profile">
+        <div class="card">
+          <div class="p-head"><div class="medal">柳</div><div><h3>류서진 <span class="hanja">柳書珍</span></h3><div class="role">요현의 부관 · 20대 중반 여성 · 견기 없는 문관 출신</div></div></div>
+          <dl class="kv">
+            <dt>외모</dt><dd>작고 단정한 체구. 머리를 깔끔하게 틀어 올렸고, 늘 붓과 문서를 끼고 다닌다. 문관복 소매에 먹물이 묻어 있을 때가 많다.</dd>
+            <dt>성격</dt><dd>요현보다 깐깐하고 꼼꼼하다. 일 처리가 빠르고 정확하며, 총령의 문서와 일정을 도맡는다. 결재를 미루거나 끼니를 거르는 상관에게 잔소리를 아끼지 않는다.</dd>
+            <dt>말투</dt><dd>또박또박한 존댓말에 잔소리가 섞인다.</dd>
+          </dl>
+          <p class="quote">“오늘 안에 결재하지 않으시면, 내일 제가 처리할 분량이 두 배가 됩니다, 총령.”</p>
+        </div>
+
+        <div class="card">
+          <div class="p-head"><div class="medal">朱</div><div><h3>주아령 <span class="hanja">朱雅鈴</span></h3><div class="role">진마사 진졸 · 20대 초반 여성 · 무가, 방울</div></div></div>
+          <dl class="kv">
+            <dt>외모</dt><dd>작고 날랜 체구, 동그란 눈, 높게 묶은 머리. 허리와 손목의 방울이 움직일 때마다 딸랑거린다. 진졸 무복 어딘가에 늘 흙이 묻어 있다.</dd>
+            <dt>내력</dt><dd>수계군 시절 요현의 부대원. 요현을 따라 수도로 지원해 왔다. 당신이 진마사 소속이라면 같은 시기에 입궁한 동기다.</dd>
+            <dt>성격</dt><dd>발랄한 말괄량이. 겁이 없고 눈치가 빠르며, 실전 경험은 수도의 신입들보다 훨씬 많다. 요현을 몹시 따른다.</dd>
+            <dt>말투</dt><dd>발랄한 존댓말, 동기에게는 반말. 요현을 자꾸 ‘대장’이라 불렀다가 고친다.</dd>
+          </dl>
+          <p class="quote">“대장! 아, 아니지. 총령님! 오늘도 밥 안 드셨죠?”</p>
+        </div>
+
+        <div class="card">
+          <div class="p-head"><div class="medal">南</div><div><h3>남궁휘 <span class="hanja">南宮輝</span></h3><div class="role">감찰대를 이끄는 진관 · 30대 중반 남성 · 도가, 검</div></div></div>
+          <dl class="kv">
+            <dt>외모</dt><dd>느슨하게 묶은 긴 흑발에 늘 웃는 눈매. 키가 크고 날렵하다. 감찰대 무복을 편하게 풀어 입고 소매를 걷어붙이기 일쑤다.</dd>
+            <dt>성격</dt><dd>능청스럽고 넉살 좋은 사교가. 실력이 확실하고 현장 감각이 뛰어나다. 수도에서 요현과 말이 통하는 몇 안 되는 사람으로, 요현을 은근히 챙긴다.</dd>
+            <dt>말투</dt><dd>능청스러운 하게체.</dd>
+          </dl>
+          <p class="quote">“이보게 총령, 또 끼니를 걸렀나? 얼굴에 다 쓰여 있네.”</p>
+        </div>
+
+        <div class="card">
+          <div class="p-head"><div class="medal red">權</div><div><h3>권문혁 <span class="hanja">權文赫</span></h3><div class="role">진마사령 · 50대 남성 · 행정에 능한 문관형</div></div></div>
+          <dl class="kv">
+            <dt>외모</dt><dd>희끗한 수염을 단정히 기른 중키. 눈가 주름이 깊고 늘 뒷짐을 진다. 고급 관복에 향 냄새가 짙게 밴다.</dd>
+            <dt>성격</dt><dd>체면과 서열을 중시하는 노련한 권력자. 임시 총령에게 윗자리를 내준 탓에 변경 출신 요현을 못마땅해한다. 경위대장 윤세광과도 사이가 나쁘다.</dd>
+            <dt>말투</dt><dd>느릿하고 뼈 있는 하오체.</dd>
+          </dl>
+          <p class="quote">“총령께서는 아직 수도의 법도를 잘 모르시는 듯하오.”</p>
+        </div>
+
+        <div class="card">
+          <div class="p-head"><div class="medal teal">尹</div><div><h3>윤세광 <span class="hanja">尹世光</span></h3><div class="role">경위대장 · 40대 후반 남성 · 명문가 출신</div></div></div>
+          <dl class="kv">
+            <dt>외모</dt><dd>풍채가 좋고 각진 얼굴, 날카로운 눈매. 검푸른 무복에 은실 결계 문양, 의전용 은빛 흉갑을 즐겨 걸친다.</dd>
+            <dt>성격</dt><dd>거만하고 텃세가 심하다. 변경 출신 요현을 업신여기고, 권문혁은 실전도 모르는 문관이라 깔본다. 경위대의 체면을 무엇보다 중시한다.</dd>
+            <dt>말투</dt><dd>겉으로는 예를 갖추지만 비꼬는 투가 섞인 존댓말.</dd>
+          </dl>
+          <p class="quote">“변경의 방식이 이 왕궁에서도 통할 거라 여기신다면, 곤란하옵니다.”</p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="이전, 다음 장">
+      <button type="button" class="prev" id="prevBtn"><small>← 이전</small><span id="prevName"></span></button>
+      <button type="button" class="next" id="nextBtn"><small>다음 →</small><span id="nextName"></span></button>
+    </nav>
+  </main>
+</div>
+
+<template id="tpl-city"><svg viewBox="0 0 400 312" class="mapsvg" data-sheet="city" role="img"><defs><linearGradient id="dmMtnC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d8a7a"></stop><stop offset="1" stop-color="#9fb98f"></stop></linearGradient><linearGradient id="dmRiverC" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8fb3bd"></stop><stop offset="1" stop-color="#a9c7cc"></stop></linearGradient></defs><g><g><path d="M-5.972975148347256 64 Q14.610358184986076 23.133117391480482 25.693691518319408 18.592352657200536 Q36.77702485165274 23.133117391480482 57.36035818498607 64 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M25.693691518319408 18.592352657200536 Q20.943691518319408 41.29617632860027 13.027024851652742 64" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M22.693691518319408 21.592352657200536 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M45.186980014007226 64 Q65.77031334734056 26.64990130219303 76.85364668067389 22.499890335770033 Q87.93698001400722 26.64990130219303 108.52031334734056 64 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M76.85364668067389 22.499890335770033 Q72.10364668067389 43.249945167885016 64.18698001400722 64" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M73.85364668067389 25.499890335770033 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M79.7258299517691 64 Q100.30916328510244 24.664886957350973 111.39249661843577 20.29431884150108 Q122.4758299517691 24.664886957350973 143.05916328510244 64 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M111.39249661843577 20.29431884150108 Q106.64249661843577 42.14715942075054 98.7258299517691 64" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M108.39249661843577 23.29431884150108 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M123.51106724541913 64 Q144.09440057875244 25.62412260347992 155.17773391208578 21.360136226088798 Q166.26106724541913 25.62412260347992 186.84440057875244 64 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M155.17773391208578 21.360136226088798 Q150.42773391208578 42.6800681130444 142.51106724541913 64" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M152.17773391208578 24.360136226088798 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M171.8156057967329 64 Q192.39893913006622 22.57212390525092 203.48227246339957 17.96902656138991 Q214.5656057967329 22.57212390525092 235.14893913006622 64 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M203.48227246339957 17.96902656138991 Q198.73227246339957 40.984513280694955 190.8156057967329 64" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M200.48227246339957 20.96902656138991 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M207.4996100459911 64 Q228.0829433793244 25.658070169127313 239.16627671265775 21.397855743474793 Q250.2496100459911 25.658070169127313 270.83294337932443 64 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M239.16627671265775 21.397855743474793 Q234.41627671265775 42.698927871737396 226.4996100459911 64" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M236.16627671265775 24.397855743474793 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M257.1901671532218 64 Q277.7735004865552 31.297012274430017 288.8568338198885 27.663346971588908 Q299.9401671532218 31.297012274430017 320.5235004865552 64 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M288.8568338198885 27.663346971588908 Q284.1068338198885 45.831673485794454 276.1901671532218 64" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M285.8568338198885 30.663346971588908 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M298.0408577026101 64 Q318.62419103594345 19.571594867069507 329.70752436927677 14.635105407855008 Q340.7908577026101 19.571594867069507 361.37419103594345 64 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M329.70752436927677 14.635105407855008 Q324.95752436927677 39.317552703927504 317.0408577026101 64" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M326.70752436927677 17.635105407855008 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M336.68756101085773 64 Q357.2708943441911 29.295889462639025 368.3542276775244 25.439877180710027 Q379.43756101085773 29.295889462639025 400.0208943441911 64 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M368.3542276775244 25.439877180710027 Q363.6042276775244 44.719938590355014 355.68756101085773 64" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M365.3542276775244 28.439877180710027 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g></g><g><g><path d="M34.79679280083898 120 Q46.17179280083898 97.26222935709899 52.29679280083898 94.73581039677666 Q58.42179280083898 97.26222935709899 69.79679280083897 120 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M52.29679280083898 94.73581039677666 Q49.67179280083898 107.36790519838833 45.29679280083898 120" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M49.29679280083898 97.73581039677666 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M54.023542963514046 120 Q65.39854296351405 102.16619776418214 71.52354296351405 100.1846641824246 Q77.64854296351405 102.16619776418214 89.02354296351405 120 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M71.52354296351405 100.1846641824246 Q68.89854296351405 110.0923320912123 64.52354296351405 120" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M68.52354296351405 103.1846641824246 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M75.39934133085383 120 Q86.77434133085383 103.32607585800521 92.89934133085383 101.47341762000579 Q99.02434133085383 103.32607585800521 110.39934133085383 120 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M92.89934133085383 101.47341762000579 Q90.27434133085383 110.7367088100029 85.89934133085383 120" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M89.89934133085383 104.47341762000579 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g></g><g><g><path d="M28.190875944088475 306 Q41.597125944088475 285.80273873144176 48.815875944088475 283.5585985904909 Q56.034625944088475 285.80273873144176 69.44087594408848 306 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M48.815875944088475 283.5585985904909 Q45.722125944088475 294.77929929524544 40.565875944088475 306" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M45.815875944088475 286.5585985904909 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M58.09355117553787 306 Q71.49980117553787 285.2203894704598 78.71855117553787 282.91154385606643 Q85.93730117553787 285.2203894704598 99.34355117553787 306 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M78.71855117553787 282.91154385606643 Q75.62480117553787 294.4557719280332 70.46855117553787 306" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M75.71855117553787 285.91154385606643 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M90.15457243536366 306 Q103.56082243536366 280.9157144904969 110.77957243536366 278.1285716561077 Q117.99832243536366 280.9157144904969 131.40457243536366 306 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M110.77957243536366 278.1285716561077 Q107.68582243536366 292.0642858280538 102.52957243536366 306" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M107.77957243536366 281.1285716561077 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M118.11675438852399 306 Q131.523004388524 285.59855349402756 138.741754388524 283.3317261044751 Q145.960504388524 285.59855349402756 159.366754388524 306 Z" fill="url(#dmMtnC)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M138.741754388524 283.3317261044751 Q135.648004388524 294.66586305223757 130.491754388524 306" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M135.741754388524 286.3317261044751 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g></g><path d="M0 262 C 70 256 130 272 200 270 S 320 266 352 244 S 388 196 400 176" fill="none" stroke="url(#dmRiverC)" stroke-width="13" stroke-linecap="round"></path><path d="M0 262 C 70 256 130 272 200 270 S 320 266 352 244 S 388 196 400 176" fill="none" stroke="#d3e4e4" stroke-width="3" stroke-dasharray="6 9" opacity="0.8"></path><text x="124" y="284" font-size="9.5" fill="#4d6f78" style="font-family: &quot;Song Myung&quot;, &quot;Noto Serif KR&quot;, serif; letter-spacing: 3px;">淸 河</text><ellipse cx="300" cy="154" rx="40" ry="26" fill="rgba(214,150,80,0.13)"></ellipse><ellipse cx="152" cy="214" rx="42" ry="26" fill="rgba(150,110,70,0.12)"></ellipse><ellipse cx="100" cy="164" rx="32" ry="24" fill="rgba(110,130,90,0.12)"></ellipse><path d="M200 118 V250 M48 150 H352 M200 170 C 240 170 270 168 300 156 M160 200 H240 M200 250 V266" stroke="#c4a266" stroke-width="2.4" fill="none" opacity="0.75" stroke-linecap="round"></path><path d="M352 150 C 370 156 380 168 400 175" stroke="#c4a266" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="4 3"></path><path d="M290 66 C 280 50 250 36 236 22" stroke="#c4a266" stroke-width="1.6" fill="none" opacity="0.6" stroke-dasharray="4 3"></path><path d="M60 70 Q200 56 340 70 Q358 150 344 238 Q200 258 56 238 Q42 150 60 70 Z" fill="rgba(240,228,200,0.18)" stroke="#4a3a2a" stroke-width="2.4"></path><path d="M60 70 Q200 56 340 70 Q358 150 344 238 Q200 258 56 238 Q42 150 60 70 Z" fill="none" stroke="#4a3a2a" stroke-width="4.5" stroke-dasharray="1.4 3" transform="translate(0 0)" opacity="0.55"></path><rect x="128" y="66" width="144" height="52" rx="2" fill="rgba(180,60,40,0.07)" stroke="#7a3a2a" stroke-width="1.4"></rect><line x1="162" y1="66" x2="162" y2="118" stroke="#7a3a2a" stroke-width="1" stroke-dasharray="2 2"></line><g transform="translate(212 84) scale(1.25)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(212 104) scale(1)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(240 92) scale(0.8)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(184 92) scale(0.8)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(146 84) scale(0.7)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(146 104) scale(0.7)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><rect x="128" y="66" width="144" height="52" fill="rgba(0,0,0,0)"></rect><g transform="translate(140 205) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(152 214) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(164 206) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(132 218) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(176 216) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(146 226) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(160 230) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(124 230) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(170 196) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(138 194) scale(0.8)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(282 140) scale(0.85)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(296 140) scale(0.85)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(310 146) scale(0.85)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(286 160) scale(0.85)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(300 162) scale(0.85)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(314 160) scale(0.85)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(276 152) scale(0.85)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(92 150) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(108 158) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(96 172) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(114 176) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(82 164) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(184 136) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(216 136) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(184 160) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(216 160) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(184 184) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(216 184) scale(1)" opacity="0.9"><rect x="-4" y="-2" width="8" height="5" fill="#e8dcc0" stroke="#6b5a44" stroke-width="0.6"></rect><path d="M-6 -2 L0 -6 L6 -2 Z" fill="#7b6a55"></path></g><g transform="translate(200 252)"><rect x="-7" y="-2" width="14" height="6" fill="#cdb98f" stroke="#4a3a2a" stroke-width="0.7"></rect><rect x="-2.2" y="0" width="4.4" height="4" fill="#4a3a2a"></rect><path d="M-9 -2 Q-6 -4 -5 -6 H5 Q6 -4 9 -2 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.5"></path></g><g transform="translate(350 150)"><rect x="-7" y="-2" width="14" height="6" fill="#cdb98f" stroke="#4a3a2a" stroke-width="0.7"></rect><rect x="-2.2" y="0" width="4.4" height="4" fill="#4a3a2a"></rect><path d="M-9 -2 Q-6 -4 -5 -6 H5 Q6 -4 9 -2 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.5"></path></g><g transform="translate(50 150)"><rect x="-7" y="-2" width="14" height="6" fill="#cdb98f" stroke="#4a3a2a" stroke-width="0.7"></rect><rect x="-2.2" y="0" width="4.4" height="4" fill="#4a3a2a"></rect><path d="M-9 -2 Q-6 -4 -5 -6 H5 Q6 -4 9 -2 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.5"></path></g><g transform="translate(290 64)"><rect x="-7" y="-2" width="14" height="6" fill="#cdb98f" stroke="#4a3a2a" stroke-width="0.7"></rect><rect x="-2.2" y="0" width="4.4" height="4" fill="#4a3a2a"></rect><path d="M-9 -2 Q-6 -4 -5 -6 H5 Q6 -4 9 -2 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.5"></path></g><g transform="translate(76 104)" opacity="0.9"><path d="M-4 0 h8 M-3.5 -4 h7 M-3 -8 h6" stroke="#4a3a2a" stroke-width="1.2"></path><path d="M0 -8 v-4" stroke="#4a3a2a" stroke-width="0.8"></path><rect x="-2" y="-8" width="4" height="8" fill="#b8a888"></rect></g><g transform="translate(92 294)" opacity="0.9"><path d="M-4 0 h8 M-3.5 -4 h7 M-3 -8 h6" stroke="#4a3a2a" stroke-width="1.2"></path><path d="M0 -8 v-4" stroke="#4a3a2a" stroke-width="0.8"></path><rect x="-2" y="-8" width="4" height="8" fill="#b8a888"></rect></g><g transform="translate(372 30)"><circle r="11" fill="rgba(255,255,255,0.35)" stroke="#4a3a2a" stroke-width="0.8"></circle><path d="M0 -9 L3 0 L0 9 L-3 0 Z" fill="#4a3a2a" opacity="0.8"></path><path d="M0 -9 L3 0 L-3 0 Z" fill="#b42a1f"></path><text x="0" y="-14" text-anchor="middle" font-size="9" fill="#2a2018" style="font-family: &quot;Song Myung&quot;, &quot;Noto Serif KR&quot;, serif;">北</text></g></svg></template>
+<template id="tpl-palace"><svg viewBox="0 0 400 312" class="mapsvg" data-sheet="palace" role="img"><defs><linearGradient id="dmMtnP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d8a7a"></stop><stop offset="1" stop-color="#9fb98f"></stop></linearGradient></defs><g><g><path d="M-16.4757241019106 24 Q7.8992758980894 5.378871464227849 21.0242758980894 3.3098571824753904 Q34.1492758980894 5.378871464227849 58.5242758980894 24 Z" fill="url(#dmMtnP)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M21.0242758980894 3.3098571824753904 Q15.3992758980894 13.654928591237695 6.0242758980894 24" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M18.0242758980894 6.30985718247539 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M41.872510674147634 24 Q66.24751067414763 5.637310970971544 79.37251067414763 3.597012189968382 Q92.49751067414763 5.637310970971544 116.87251067414763 24 Z" fill="url(#dmMtnP)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M79.37251067414763 3.597012189968382 Q73.74751067414763 13.798506094984191 64.37251067414763 24" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M76.37251067414763 6.597012189968382 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M89.41549447501893 24 Q113.79049447501893 3.216174901753842 126.91549447501893 0.9068610019487124 Q140.04049447501893 3.216174901753842 164.41549447501893 24 Z" fill="url(#dmMtnP)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M126.91549447501893 0.9068610019487124 Q121.29049447501893 12.453430500974356 111.91549447501893 24" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M123.91549447501893 3.9068610019487124 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M139.19460600771663 24 Q163.56960600771663 6.235782783405451 176.69460600771663 4.2619808704505004 Q189.81960600771663 6.235782783405451 214.19460600771663 24 Z" fill="url(#dmMtnP)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M176.69460600771663 4.2619808704505004 Q171.06960600771663 14.13099043522525 161.69460600771663 24" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M173.69460600771663 7.2619808704505004 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M183.73604692457593 24 Q208.11104692457593 6.932278627892959 221.23604692457593 5.035865142103287 Q234.36104692457593 6.932278627892959 258.73604692457593 24 Z" fill="url(#dmMtnP)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M221.23604692457593 5.035865142103287 Q215.61104692457593 14.517932571051643 206.23604692457593 24" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M218.23604692457593 8.035865142103287 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M236.316908361885 24 Q260.691908361885 7.264758646210538 273.816908361885 5.4052873846783775 Q286.941908361885 7.264758646210538 311.316908361885 24 Z" fill="url(#dmMtnP)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M273.816908361885 5.4052873846783775 Q268.191908361885 14.702643692339189 258.816908361885 24" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M270.816908361885 8.405287384678378 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M288.08779604453593 24 Q312.46279604453593 4.681501662414814 325.58779604453593 2.535001847127571 Q338.71279604453593 4.681501662414814 363.08779604453593 24 Z" fill="url(#dmMtnP)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M325.58779604453593 2.535001847127571 Q319.96279604453593 13.267500923563786 310.58779604453593 24" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M322.58779604453593 5.535001847127571 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g><g><path d="M337.19637491129106 24 Q361.57137491129106 1.3299540328898019 374.69637491129106 -1.188939963455777 Q387.82137491129106 1.3299540328898019 412.19637491129106 24 Z" fill="url(#dmMtnP)" stroke="#3e5a50" stroke-width="0.9" opacity="0.92"></path><path d="M374.69637491129106 -1.188939963455777 Q369.07137491129106 11.405530018272112 359.69637491129106 24" fill="none" stroke="#3e5a50" stroke-width="0.6" opacity="0.55"></path><path d="M371.69637491129106 1.811060036544223 q3 -3 6 0" fill="none" stroke="#f3ecd6" stroke-width="0.8" opacity="0.6"></path></g></g><path d="M150 18 H372 V294 H150 Z" fill="rgba(180,60,40,0.05)" stroke="#7a3a2a" stroke-width="2"></path><path d="M14 18 H150 V294 H14 Z" fill="rgba(90,110,90,0.07)" stroke="#4a3a2a" stroke-width="2"></path><path d="M150 18 V294" stroke="#4a3a2a" stroke-width="3"></path><text x="20" y="290" font-size="9" fill="#4a3a2a" style="font-family: &quot;Song Myung&quot;, &quot;Noto Serif KR&quot;, serif; letter-spacing: 2px;">西苑</text><g><circle cx="200" cy="40" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="197" cy="38" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="214" cy="30" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="211" cy="28" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="272" cy="34" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="269" cy="32" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="286" cy="46" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="283" cy="44" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="300" cy="30" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="297" cy="28" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="180" cy="52" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="177" cy="50" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="312" cy="58" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="309" cy="56" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="196" cy="62" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="193" cy="60" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="290" cy="66" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="287" cy="64" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="26" cy="30" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="23" cy="28" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="64" cy="30" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="61" cy="28" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><g><circle cx="74" cy="52" r="6" fill="#6d8f68" opacity="0.85"></circle><circle cx="71" cy="50" r="3.5" fill="#86a77c" opacity="0.9"></circle></g><ellipse cx="248" cy="48" rx="26" ry="13" fill="#9fc2c4" stroke="#6f9aa0" stroke-width="1"></ellipse><path d="M232 48 h32" stroke="#d6e8e6" stroke-width="1.2" stroke-dasharray="4 4"></path><g transform="translate(272 52) scale(0.55)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><path d="M232 284 V70" stroke="#c4a266" stroke-width="9" opacity="0.35"></path><rect x="196" y="162" width="72" height="50" fill="rgba(200,180,140,0.25)" stroke="#a88a5a" stroke-width="0.6"></rect><path d="M170 236 H294 M170 120 H294 M180 78 H284" stroke="#7a3a2a" stroke-width="1.2"></path><g transform="translate(232 236)"><rect x="-7" y="-2" width="14" height="6" fill="#cdb98f" stroke="#4a3a2a" stroke-width="0.7"></rect><rect x="-2.2" y="0" width="4.4" height="4" fill="#4a3a2a"></rect><path d="M-9 -2 Q-6 -4 -5 -6 H5 Q6 -4 9 -2 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.5"></path></g><g transform="translate(232 120)"><rect x="-7" y="-2" width="14" height="6" fill="#cdb98f" stroke="#4a3a2a" stroke-width="0.7"></rect><rect x="-2.2" y="0" width="4.4" height="4" fill="#4a3a2a"></rect><path d="M-9 -2 Q-6 -4 -5 -6 H5 Q6 -4 9 -2 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.5"></path></g><g transform="translate(232 292)"><rect x="-7" y="-2" width="14" height="6" fill="#cdb98f" stroke="#4a3a2a" stroke-width="0.7"></rect><rect x="-2.2" y="0" width="4.4" height="4" fill="#4a3a2a"></rect><path d="M-9 -2 Q-6 -4 -5 -6 H5 Q6 -4 9 -2 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.5"></path></g><g transform="translate(232 186) scale(1.9)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(232 140) scale(1.25)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(232 98) scale(1.3)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(204 98) scale(0.75)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(260 98) scale(0.75)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(310 262) scale(1)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(330 262) scale(0.8)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(150 240)"><rect x="-7" y="-2" width="14" height="6" fill="#cdb98f" stroke="#4a3a2a" stroke-width="0.7"></rect><rect x="-2.2" y="0" width="4.4" height="4" fill="#4a3a2a"></rect><path d="M-9 -2 Q-6 -4 -5 -6 H5 Q6 -4 9 -2 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.5"></path></g><g transform="translate(98 82) scale(1.05)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(110 128) scale(0.85)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(46 108) scale(0.8)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(40 150) scale(0.7)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(52 200) scale(0.9)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><g transform="translate(98 222) scale(0.95)"><rect x="-11" y="-1" width="22" height="7" fill="#d9c9a4" stroke="#5a3a24" stroke-width="0.7"></rect><path d="M-9 -1 v7 M-3 -1 v7 M3 -1 v7 M9 -1 v7" stroke="#a8352a" stroke-width="1.2"></path><path d="M-15 -1 Q-12 -3 -9 -6 H9 Q12 -3 15 -1 Z" fill="#4e6b72" stroke="#2e444a" stroke-width="0.6"></path><path d="M-9 -6 h18" stroke="#2e444a" stroke-width="1"></path></g><rect x="66" y="154" width="46" height="30" rx="2" fill="rgba(200,170,110,0.35)" stroke="#a88a5a" stroke-width="0.7"></rect><g><ellipse cx="42" cy="50" rx="13" ry="8" fill="#a9c9c6" stroke="#7a8a80" stroke-width="1"></ellipse><circle cx="28" cy="46" r="5" fill="#8f8a7a"></circle><circle cx="56" cy="44" r="4" fill="#8f8a7a"></circle><path d="M38 40 c-3 -5 3 -7 0 -12 M46 40 c-3 -5 3 -7 0 -12" stroke="#ffffff" stroke-width="1.1" fill="none" opacity="0.8"></path></g><g transform="translate(372 309)"><text x="0" y="0" text-anchor="end" font-size="9" fill="#5c4e40" style="font-family: &quot;Song Myung&quot;, &quot;Noto Serif KR&quot;, serif;">南 ↓ 正門</text></g></svg></template>
+
+<script>
+(function () {
+  /* ───── 장 넘기기 ───── */
+  var sections = Array.prototype.slice.call(document.querySelectorAll("section.chapter"));
+  var ids = sections.map(function (s) { return s.getAttribute("data-id"); });
+  function sec(id) { return document.querySelector('section[data-id="' + id + '"]'); }
+  var links = Array.prototype.slice.call(document.querySelectorAll(".toc a[data-go]"));
+  var toc = document.getElementById("toc");
+  var cur = document.getElementById("cur");
+  var prevBtn = document.getElementById("prevBtn");
+  var nextBtn = document.getElementById("nextBtn");
+  var current = "home";
+
+  var groupName = { world: "세계관", art: "세계관", org: "세계관", lands: "지리", map: "지리", yohyeon: "인물", cast: "인물" };
+  var grid = document.getElementById("chapterGrid");
+  sections.forEach(function (s) {
+    var sid = s.getAttribute("data-id");
+    if (sid === "home") return;
+    var a = document.createElement("a");
+    a.href = "#" + sid;
+    a.setAttribute("data-go", sid);
+    a.innerHTML = '<span class="hz">' + s.getAttribute("data-hz") + "</span><span><b>" + s.getAttribute("data-title") + "</b><small>" + (groupName[sid] || "") + "</small></span>";
+    grid.appendChild(a);
+  });
+
+  function titleOf(id) { var s = sec(id); return s ? s.getAttribute("data-title") : ""; }
+
+  function show(id, fromHash) {
+    if (ids.indexOf(id) < 0) id = "home";
+    current = id;
+    sections.forEach(function (s) { s.hidden = s.getAttribute("data-id") !== id; });
+    links.forEach(function (a) {
+      if (a.getAttribute("data-go") === id) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    var s = sec(id);
+    cur.innerHTML = "<b>" + s.getAttribute("data-hz") + "</b>" + s.getAttribute("data-title");
+    var i = ids.indexOf(id);
+    prevBtn.hidden = i <= 0;
+    nextBtn.hidden = i >= ids.length - 1;
+    if (i > 0) document.getElementById("prevName").textContent = titleOf(ids[i - 1]);
+    if (i < ids.length - 1) document.getElementById("nextName").textContent = titleOf(ids[i + 1]);
+    toc.classList.remove("open");
+    if (!fromHash) { try { history.replaceState(null, "", "#" + id); } catch (e) {} }
+    try { window.scrollTo({ top: 0, behavior: "instant" }); } catch (e) { window.scrollTo(0, 0); }
+    if (id === "map") fitMap();
+  }
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("[data-go]") : null;
+    if (!a) return;
+    e.preventDefault();
+    show(a.getAttribute("data-go"));
+  });
+  prevBtn.addEventListener("click", function () { var i = ids.indexOf(current); if (i > 0) show(ids[i - 1]); });
+  nextBtn.addEventListener("click", function () { var i = ids.indexOf(current); if (i < ids.length - 1) show(ids[i + 1]); });
+  document.getElementById("tocOpen").addEventListener("click", function () { toc.classList.add("open"); });
+  document.getElementById("tocClose").addEventListener("click", function () { toc.classList.remove("open"); });
+  document.addEventListener("keydown", function (e) {
+    var t = e.target;
+    if (t && (/INPUT|TEXTAREA|SELECT/.test(t.tagName) || (t.closest && t.closest(".map-paper")))) return;
+    if (e.key === "ArrowRight" && !nextBtn.hidden) nextBtn.click();
+    if (e.key === "ArrowLeft" && !prevBtn.hidden) prevBtn.click();
+    if (e.key === "Escape") toc.classList.remove("open");
+  });
+  window.addEventListener("hashchange", function () { show((location.hash || "#home").slice(1), true); });
+
+  /* ───── 누르는 지도 ───── */
+  var NODES = {"city": [{"id": "palace", "name": "왕궁", "big": true, "x": 212, "y": 72, "ly": -6, "desc": "운봉산을 등지고 도성을 내려다보는 궁. 누르면 왕궁도로 넘어간다."}, {"id": "seowon", "name": "서원", "x": 146, "y": 112, "ly": 13, "desc": "왕궁 서쪽 끝, 담 하나 너머의 진마사 구역. 향과 먹, 약초 냄새가 늘 떠돈다."}, {"id": "gwan", "name": "관청가", "big": true, "x": 200, "y": 172, "lx": 8, "ly": 3, "anchor": "start", "desc": "왕궁 정문에서 남쪽으로 곧게 뻗은 관가대로를 따라 관청이 늘어선다. 낮에는 관리와 전갈꾼으로 붐빈다."}, {"id": "hyeoncheon", "name": "현천관", "x": 240, "y": 192, "desc": "운화국 도가의 중심 도관. 진마사 퇴마사 상당수가 이곳 출신이고, 정식 부적을 판다."}, {"id": "dongsi", "name": "동시", "big": true, "x": 298, "y": 132, "desc": "도성 최대의 시장. 비단전, 약재전, 어물전이 늘어서고 닷새마다 큰 장이 선다. 결계 틈 소문 뒤로 부적 노점이 부쩍 늘었다."}, {"id": "meokja", "name": "먹자골목", "x": 300, "y": 178, "ly": 12, "desc": "국밥, 전, 만두, 엿. 김과 연기가 자욱한 골목."}, {"id": "cheonghyang", "name": "청향다관", "x": 262, "y": 148, "ly": -6, "desc": "대나무 발이 드리운 조용한 찻집. 은밀한 이야기와 소문이 오간다."}, {"id": "wolharu", "name": "월하루", "x": 330, "y": 226, "desc": "청하가 내려다보이는 이층 주루. 이층 창가에서 강 위의 달이 보인다. 요현이 드물게 들른다."}, {"id": "jeogwon", "name": "적원 천막촌", "x": 330, "y": 100, "ly": -6, "anchor": "end", "desc": "성벽 곁에 모인 적원 상인들의 천막. 털가죽과 말, 향신료를 팔고 신대 무당이 점을 친다."}, {"id": "unsu", "name": "운수사", "x": 76, "y": 112, "ly": 11, "desc": "도성 서쪽 산기슭, 수도에서 가장 오래된 불문 사찰. 새벽 종소리가 도성 전체에 울린다."}, {"id": "yangban", "name": "양반가", "x": 100, "y": 186, "ly": 11, "desc": "담이 높고 골목이 조용한 서부의 저택가."}, {"id": "namchon", "name": "남촌", "big": true, "x": 150, "y": 222, "ly": -8, "desc": "초가와 기와가 뒤섞인 서민 마을. 신목과 무가 신당이 곳곳에 있고, 결계 틈 소문이 가장 무성하다."}, {"id": "gaekju", "name": "남문객주", "x": 184, "y": 240, "lx": -5, "ly": 2, "anchor": "end", "desc": "떠돌이 퇴마사들의 거점. 담벼락 ‘방벽’에 붙은 의뢰를 떼어 일을 받는다."}, {"id": "beodeul", "name": "버들집", "x": 218, "y": 240, "lx": 5, "ly": 2, "anchor": "start", "desc": "객주 맞은편 주막. 탁주와 국밥이 싸고, 떠돌이와 뱃사람이 섞여 떠든다."}, {"id": "nammun", "name": "남문", "x": 200, "y": 256, "ly": 11, "desc": "네 대문 중 가장 붐비는 문. 문루 아래 대결계석이 묻혀 있고, 요즘 이 근처 결계가 흔들린다는 말이 돈다."}, {"id": "dongmun", "name": "동문", "x": 350, "y": 158, "ly": 11, "desc": "관도로 이어지는 동쪽 대문."}, {"id": "seomun", "name": "서문", "x": 50, "y": 158, "ly": 11, "desc": "묘역 쪽으로 난 서쪽 대문."}, {"id": "bukmun", "name": "북문", "x": 290, "y": 72, "lx": 9, "ly": 3, "anchor": "start", "desc": "운봉산 길로 이어지는 북쪽 대문."}, {"id": "naru", "name": "나루", "x": 204, "y": 274, "lx": 7, "ly": 3, "anchor": "start", "desc": "청하를 건너는 나루터. 물안개가 잦고, 안개 속에서 이형을 봤다는 뱃사람이 많다."}, {"id": "galdae", "name": "갈대밭·폐촌", "x": 262, "y": 294, "ly": -5, "desc": "강 건너 갈대밭 너머의 버려진 마을. 결계 틈이 처음 열린 곳 중 하나로, 무너진 담과 빈 우물만 남았다."}, {"id": "mumyeong", "name": "무명사", "x": 110, "y": 296, "lx": 7, "ly": 3, "anchor": "start", "desc": "남문 밖 산자락의 옛 절터. 몇 번을 토벌해도 무언가가 계속 모여든다."}, {"id": "myoyeok", "name": "서쪽 묘역", "x": 24, "y": 206, "ly": 12, "desc": "성 밖 공동묘지. 귀가 나온다는 소문과 도깨비불 목격담이 끊이지 않는다."}, {"id": "gwando", "name": "관도·역참", "x": 388, "y": 182, "ly": 12, "anchor": "end", "desc": "동문에서 지방으로 뻗는 큰길. 반나절 거리마다 역참이 있다."}, {"id": "sangil", "name": "북쪽 산길", "x": 236, "y": 24, "lx": 6, "ly": 3, "anchor": "start", "desc": "운봉산을 넘어 수계령으로 이어지는 길. 요현이 올라온 길이다."}], "palace": [{"id": "jeongmun", "name": "정문", "x": 232, "y": 300, "lx": 12, "ly": 3, "anchor": "start", "desc": "남쪽을 향한 왕궁의 정문. 경위대가 드나드는 이의 몸에 탁기가 묻었는지 살핀다."}, {"id": "gyeongwi", "name": "경위대 영", "x": 320, "y": 274, "ly": 12, "desc": "정문 곁 경위대 본영. 갑옷 소리와 구령이 끊이지 않는다."}, {"id": "unhwa", "name": "운화전", "big": true, "x": 232, "y": 206, "ly": 14, "desc": "왕이 조회를 여는 정전. 문무백관이 품계대로 늘어서고, 숨소리조차 조심스럽다."}, {"id": "cheongjeong", "name": "청정각", "x": 232, "y": 152, "ly": 12, "desc": "왕이 신하들과 실무를 논하는 편전. 결계 틈 사태가 이곳에서 논의되고, 진마사령과 경위대장이 자주 언쟁한다."}, {"id": "naejeon", "name": "내전", "x": 232, "y": 108, "lx": 14, "ly": 3, "anchor": "start", "desc": "왕실의 거처. 내관과 궁녀만 드나들고, 허락 없이는 누구도 들 수 없다."}, {"id": "huwon", "name": "후원", "x": 248, "y": 64, "ly": 10, "desc": "연못과 정자, 오래된 소나무 숲이 있는 정원. 허락받은 자만 들어간다."}, {"id": "seowonmun", "name": "서원문", "x": 150, "y": 252, "ly": 12, "desc": "서원으로 드는 문. 경위대가 아니라 진마사 진졸이 지키고, 부적이 덕지덕지 붙어 있다."}, {"id": "bonchung", "name": "진마사 본청", "x": 98, "y": 232, "ly": 12, "desc": "진마사령 권문혁의 집무 공간. 향이 짙고 격식이 엄하다. 예산과 인사, 보고가 이곳을 거친다."}, {"id": "gamchal", "name": "감찰대 청사", "x": 52, "y": 210, "ly": 12, "desc": "균열 조사 기록과 지도가 벽마다 붙은, 서원에서 가장 활기찬 곳. 남궁휘의 근거지."}, {"id": "yeonmu", "name": "연무장", "x": 89, "y": 169, "ly": 25, "desc": "목검, 방울, 진언 소리가 섞이는 흙마당. 요현이 직접 지도하는 날은 신입들 얼굴이 하얗게 질린다."}, {"id": "mugo", "name": "무고", "x": 40, "y": 158, "ly": 11, "desc": "석장, 염주, 방울, 부적, 정화수를 보관하는 창고."}, {"id": "jeonghwa", "name": "정화당", "x": 110, "y": 136, "ly": 12, "desc": "계통별로 칸을 나눈 정화소. 늘 어둑하고 조용하다."}, {"id": "gwansa", "name": "관사", "x": 46, "y": 116, "ly": 12, "desc": "퇴마사들의 숙소. 신입 진졸들은 여럿이 한방을 쓴다."}, {"id": "jibmu", "name": "총령 집무처", "x": 98, "y": 90, "ly": 12, "desc": "서원 가장 안쪽 전각, 요현의 집무 공간. 등불이 밤새 꺼지지 않는다. 곁방은 부관 류서진의 자리."}, {"id": "onjeong", "name": "온정", "x": 42, "y": 62, "ly": 10, "desc": "서원 뒤편 바위틈에서 솟는 작은 온천. 김 서린 돌탕과 대나무 울타리. 요현이 가장 아끼는 곳."}]};
+  var GROUPS = {"city": [["궁과 관청", ["palace", "seowon", "gwan", "hyeoncheon"]], ["저잣거리", ["dongsi", "meokja", "cheonghyang", "wolharu", "jeogwon"]], ["마을과 절", ["namchon", "gaekju", "beodeul", "yangban", "unsu"]], ["성문", ["nammun", "dongmun", "seomun", "bukmun"]], ["도성 밖", ["naru", "galdae", "mumyeong", "myoyeok", "gwando", "sangil"]]], "palace": [["왕궁", ["jeongmun", "gyeongwi", "unhwa", "cheongjeong", "naejeon", "huwon"]], ["서원 · 진마사", ["seowonmun", "bonchung", "gamchal", "yeonmu", "mugo", "jeonghwa", "gwansa", "jibmu", "onjeong"]]]};
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var hiDpi = false;
+  try { hiDpi = (window.devicePixelRatio || 1) >= 1.5; } catch (e) {}
+  var sheet = "city";
+  var picked = null;
+  var inner = document.getElementById("mapInner");
+  var scroller = document.getElementById("mapScroll");
+  var hint = document.getElementById("mapHint");
+  var info = document.getElementById("mapInfo");
+  var chips = document.getElementById("mapChips");
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".map-tabs button"));
+
+  function el(tag, attrs) {
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function byId(id) {
+    for (var s in NODES) for (var i = 0; i < NODES[s].length; i++) if (NODES[s][i].id === id) return NODES[s][i];
+    return null;
+  }
+
+  function renderInfo() {
+    var n = picked ? byId(picked) : null;
+    if (!n) {
+      info.innerHTML = '<div class="empty">' + (sheet === "city" ? "장소를 누르면 설명이 나온다. 왕궁을 누르면 왕궁도로 넘어간다." : "장소를 누르면 설명이 나온다. 왼쪽 담 안이 진마사의 서원이다.") + "</div>";
+      return;
+    }
+    info.innerHTML = '<span class="badge">살펴보기</span><div style="min-width:0"><div class="name"></div><div class="desc"></div></div>';
+    info.querySelector(".name").textContent = n.name;
+    info.querySelector(".desc").textContent = n.desc;
+  }
+
+  function syncPicked() {
+    Array.prototype.forEach.call(inner.querySelectorAll(".pin"), function (g) {
+      g.classList.toggle("on", g.getAttribute("data-id") === picked);
+    });
+    Array.prototype.forEach.call(chips.querySelectorAll("button[data-id]"), function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-id") === picked ? "true" : "false");
+    });
+    renderInfo();
+  }
+
+  function centerOn(n) {
+    if (!n || scroller.scrollWidth <= scroller.clientWidth + 4) return;
+    var cx = (n.x / 400) * scroller.scrollWidth;
+    try { scroller.scrollTo({ left: Math.max(0, cx - scroller.clientWidth / 2), behavior: "smooth" }); } catch (e) { scroller.scrollLeft = cx - scroller.clientWidth / 2; }
+  }
+
+  function pick(id, fromChip) {
+    if (sheet === "city" && id === "palace") { setSheet("palace"); return; }
+    picked = picked === id && !fromChip ? null : id;
+    syncPicked();
+    if (fromChip) centerOn(byId(id));
+  }
+
+  function buildPins(svg) {
+    var layer = el("g", { "class": "pins" });
+    if (sheet === "city") {
+      var ph = el("rect", { x: 128, y: 66, width: 144, height: 52, "class": "palace-hit" });
+      ph.addEventListener("click", function (e) { e.stopPropagation(); setSheet("palace"); });
+      layer.appendChild(ph);
+    }
+    NODES[sheet].forEach(function (n) {
+      var fs = n.big ? 11 : 9.5;
+      var tx = n.x + (n.lx || 0);
+      var ty = n.y + (n.ly === undefined ? -6 : n.ly);
+      var anchor = n.anchor || "middle";
+      var w = n.name.length * fs * 0.98 + 4;
+      var h = fs * 1.4;
+      var rx = anchor === "start" ? tx - 2 : anchor === "end" ? tx - w + 2 : tx - w / 2;
+      var g = el("g", { "class": "pin", tabindex: "0", role: "button", "aria-label": n.name, "data-id": n.id });
+      g.appendChild(el("rect", { "class": "hit", x: rx.toFixed(1), y: (ty - fs * 1.05).toFixed(1), width: w.toFixed(1), height: h.toFixed(1), rx: 2 }));
+      g.appendChild(el("circle", { "class": "hit", cx: n.x, cy: n.y, r: 7 }));
+      g.appendChild(el("circle", { "class": "ring", cx: n.x, cy: n.y, r: 8 }));
+      g.appendChild(el("circle", { "class": "dot", cx: n.x, cy: n.y, r: n.big ? 3.4 : 2.6 }));
+      var t = el("text", { x: tx, y: ty, "text-anchor": anchor, "font-size": fs });
+      if (n.big) {
+        if (hiDpi) t.setAttribute("style", "font-family:'Song Myung','Noto Serif KR',serif;font-size:" + (fs + 1.5) + "px");
+        else t.setAttribute("style", "font-weight:600");
+      }
+      t.textContent = n.name;
+      g.appendChild(t);
+      g.addEventListener("click", function (e) { e.stopPropagation(); pick(n.id); });
+      g.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(n.id); }
+      });
+      layer.appendChild(g);
+    });
+    svg.appendChild(layer);
+    svg.addEventListener("click", function () { if (picked) { picked = null; syncPicked(); } });
+  }
+
+  function buildChips() {
+    chips.innerHTML = "";
+    (GROUPS[sheet] || []).forEach(function (grp) {
+      var lab = document.createElement("div");
+      lab.className = "grp";
+      lab.textContent = grp[0];
+      chips.appendChild(lab);
+      grp[1].forEach(function (id) {
+        var n = byId(id);
+        if (!n) return;
+        var b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("data-id", id);
+        b.setAttribute("aria-pressed", "false");
+        b.textContent = n.name;
+        b.addEventListener("click", function () { pick(id, true); });
+        chips.appendChild(b);
+      });
+    });
+  }
+
+  function setSheet(s) {
+    sheet = s;
+    picked = null;
+    tabs.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-sheet") === s ? "true" : "false"); });
+    var tpl = document.getElementById("tpl-" + s);
+    inner.innerHTML = "";
+    inner.appendChild(tpl.content.cloneNode(true));
+    inner.style.animation = "none"; void inner.offsetWidth; inner.style.animation = "";
+    buildPins(inner.querySelector("svg"));
+    buildChips();
+    syncPicked();
+    fitMap();
+  }
+
+  function fitMap() {
+    var over = scroller.scrollWidth > scroller.clientWidth + 4;
+    hint.hidden = !over;
+    if (over) scroller.scrollLeft = (scroller.scrollWidth - scroller.clientWidth) / 2;
+  }
+  tabs.forEach(function (b) { b.addEventListener("click", function () { setSheet(b.getAttribute("data-sheet")); }); });
+  if (typeof ResizeObserver !== "undefined") new ResizeObserver(function () { fitMap(); }).observe(scroller);
+
+  setSheet("city");
+  show((location.hash || "#home").slice(1), true);
+})();
+</script>
+
+</body>
+</html>
