@@ -391,7 +391,9 @@ ul.plain li::marker { color: var(--seal); }
 .bar .now b { font-weight: 400; color: #e9b48c; margin-right: 6px; }
 .bar button:disabled { opacity: .35; cursor: default; }
 .drawer { position: fixed; inset: 0; z-index: 25; background: rgba(20, 14, 8, .55); display: grid; align-items: end; }
-.drawer .sheet { max-width: 760px; width: 100%; margin: 0 auto; max-height: 84vh; overflow-y: auto; padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+/* 틀(안쪽 테두리)은 그대로 두고, 그 안의 목차만 스크롤된다 */
+.drawer .sheet { max-width: 760px; width: 100%; margin: 0 auto; max-height: 84vh; padding: 0; display: flex; flex-direction: column; overflow: hidden; }
+.drawer-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; margin: 11px; padding: 27px clamp(9px, calc(6vw - 11px), 45px) calc(20px + env(safe-area-inset-bottom, 0px)); }
 .drawer h2 { font-family: var(--display); font-weight: 400; margin: 0 0 12px; font-size: 1.5rem; }
 .drawer .home { margin-top: 16px; border: 1px solid var(--line); background: none; padding: 6px 12px; cursor: pointer; border-radius: 2px; }
 
@@ -1018,9 +1020,11 @@ ul.plain li::marker { color: var(--seal); }
 </nav>
 <div class="drawer" id="drawer" hidden>
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
-    <h2 id="drawerTitle">목차</h2>
-    <div class="contents" id="tocDrawer"></div>
-    <button class="home" type="button" data-go="cover">표지로 돌아가기</button>
+    <div class="drawer-body">
+      <h2 id="drawerTitle">목차</h2>
+      <div class="contents" id="tocDrawer"></div>
+      <button class="home" type="button" data-go="cover">표지로 돌아가기</button>
+    </div>
   </div>
 </div>
 <div class="pop" id="pop" role="tooltip" hidden></div>
