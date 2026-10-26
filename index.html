@@ -413,9 +413,18 @@ ul.plain li::marker { color: var(--seal); }
 .stage .stamp { position: absolute; right: 8%; top: 7%; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 5px 4px; border-radius: 2px; background: var(--seal); color: var(--seal-ink); font-family: var(--display); font-size: .82rem; line-height: 1.05; transform: rotate(-3deg); box-shadow: inset 0 0 0 1.5px var(--seal), inset 0 0 0 2.5px var(--seal-ink); }
 .stage .fig { position: absolute; left: 0; right: 0; bottom: 0; margin-inline: auto; display: block; max-width: 100%; object-fit: contain; object-position: 50% 100%; }
 
-.hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 36px; margin-top: 26px; align-items: start; --accent: var(--c-yohyeon); }
-.hero .stage { position: sticky; top: calc(14px + env(safe-area-inset-top, 0px)); height: min(calc(100vh - 110px), 720px); }
-.hero .fig { height: 96%; width: auto; }
+/* 요현: 전신을 크게. 그림이 정보 쪽으로 조금 넘어가고, 글은 그림 위에 얹힌다 */
+.hero { display: grid; grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); column-gap: 24px; margin-top: 22px; align-items: start; --accent: var(--c-yohyeon); }
+.hero .stage { overflow: visible; }
+.hero .stage .wash { left: 64%; top: 38%; width: 118%; }
+.hero .stage .stamp { right: 4%; top: 2%; z-index: 1; }
+.hero .stage .fig { position: relative; left: auto; right: auto; bottom: auto; width: 134%; max-width: none; height: auto; margin: 0; }
+.hero .info { position: relative; z-index: 1; }
+.hero .info .name, .hero .info .oneline, .hero .info .kv, .hero .info h2.sec, .hero .info ul.plain, .hero .info > p, .hero .info .lbl, .hero .info .bond-row b, .hero .info .bond-row span {
+  text-shadow: 0 0 1px var(--paper), 0 0 3px var(--paper), 0 0 5px var(--paper);
+}
+.hero .info .pchips li { background: var(--paper); background: color-mix(in srgb, var(--accent) 8%, var(--paper)); }
+.hero .info .kv dt { text-shadow: 0 0 2px var(--paper), 0 0 4px var(--paper), 0 0 8px var(--paper), 0 0 12px var(--paper); }
 .people .name { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(2.1rem, 7vw, 3rem); line-height: 1.15; }
 .people .name .hz { font-size: .5em; color: var(--ink-soft); }
 .pchips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 16px; padding: 0; list-style: none; }
@@ -446,7 +455,11 @@ ul.plain li::marker { color: var(--seal); }
   .people-head { grid-template-columns: auto minmax(0, 1fr); }
   .people-head .seg { grid-column: 1 / -1; }
   .hero, .card { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .hero .stage { position: relative; top: auto; height: 70svh; max-height: 640px; }
+  .hero { gap: 0; }
+  .hero .stage .fig { width: calc(100% + 24px); max-width: 480px; margin: 0 auto; left: -12px; }
+  .hero .stage .wash { left: 50%; width: 96%; }
+  .hero .stage .stamp { right: 2%; top: 4%; }
+  .hero .info { margin-top: 10px; }
   .card .stage { aspect-ratio: auto; height: 50svh; max-height: 460px; }
   .card .fig { width: auto; height: 100%; }
   .picker { flex-wrap: nowrap; justify-content: space-between; gap: 4px; }
