@@ -473,6 +473,19 @@ ul.plain li::marker { color: var(--seal); }
   .pick { width: auto; flex: 1; }
 }
 
+/* ── 묻고 답하기 ── */
+.faq { margin-top: 26px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+.qa { padding: 22px 0 20px; border-bottom: 1px solid var(--line); }
+.qa:last-child { border-bottom: 0; }
+.qa .q, .qa .a { display: grid; grid-template-columns: 2.2em minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.qa .a { margin-top: 10px; }
+.qa .mk { font-family: var(--display); font-size: 1.45rem; line-height: 1; }
+.qa .q .mk { color: var(--seal); }
+.qa .a .mk { color: var(--sansu); }
+.qa h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 1.28rem; line-height: 1.45; text-wrap: balance; }
+.qa .a p { margin: 0 0 10px; max-width: none; }
+.qa .a p:last-child { margin-bottom: 0; }
+
 @media (max-width: 640px) {
   body { font-size: 1rem; }
   .sheet { padding-top: 30px; }
@@ -1015,6 +1028,42 @@ ul.plain li::marker { color: var(--seal); }
       </div>
     </section>
 
+    <!-- 問 묻고 답하기 -->
+    <section class="view" id="v-faq" data-title="묻고 답하기" data-hz="問" data-group="부록" hidden>
+      <div class="ch-head"><div class="ch-seal">問</div><div><div class="ch-group">부록</div><h1>묻고 답하기</h1></div></div>
+      <p class="lead">플레이하며 자주 나오는 질문에 작가가 직접 답했습니다.</p>
+      <div class="faq">
+        <div class="qa">
+          <div class="q"><span class="mk" aria-hidden="true">問</span><h3>스님이 성적인 행위를 해도 되나요?</h3></div>
+          <div class="a"><span class="mk" aria-hidden="true">答</span><div>
+            <p>색욕에 빠지는 것은 당연히 금지입니다. 하지만 <b>정화를 위해 <button class="term" type="button" data-term="생기">생기</button>를 북돋는 일은 치료이므로 금지되지 않습니다.</b> 이 세계에서는 일시적인 육체적 쾌락이 생기를 끌어올려 <button class="term" type="button" data-term="탁기">탁기</button>를 몰아내는 방법으로 권장되거든요.</p>
+            <p>어디까지가 치료인지는… 두 사람의 양심에 맡깁니다.</p>
+          </div></div>
+        </div>
+        <div class="qa">
+          <div class="q"><span class="mk" aria-hidden="true">問</span><h3>너무 편의주의적인 설정 아닌가요?</h3></div>
+          <div class="a"><span class="mk" aria-hidden="true">答</span><div>
+            <p>미안합니다… 제 뭐시기콤으로 만들어진 캐릭터라 이렇게밖에 피해 갈 수가 없었습니다.</p>
+            <p>일단 이 세계관에서는 마음 놓으셔도 됩니다. 일을 저질러도 요현 본인이 맘고생(WWE)을 좀 할 뿐, 파계승이 되지는 않습니다.</p>
+          </div></div>
+        </div>
+        <div class="qa">
+          <div class="q"><span class="mk" aria-hidden="true">問</span><h3>탁기는 사람에게 정말 해롭나요?</h3></div>
+          <div class="a"><span class="mk" aria-hidden="true">答</span><div>
+            <p>탁기는 소멸과 죽음에 가까운 기운이라, 차갑고 멈춰 있는 감각 쪽입니다. 살아 있는 사람에게 좋을 리가 없지요.</p>
+            <p>하지만 설정을 잘 비틀면, 좀비처럼 탁기를 품은 채 살아가는 언데드 같은 존재도 만들어 낼 수 있습니다.</p>
+          </div></div>
+        </div>
+        <div class="qa">
+          <div class="q"><span class="mk" aria-hidden="true">問</span><h3>이 세계에는 어떤 신들이 있나요?</h3></div>
+          <div class="a"><span class="mk" aria-hidden="true">答</span><div>
+            <p>세계관에 정해 두지 않았습니다. 붙이기 나름입니다. 신이 실재하는 다신 세계관이라 어떤 신이든 지어낼 수 있습니다. 계약 과정과 신마다의 능력도 자유롭게 정하세요. ‘알고 보니 신의 환생’ 같은 설정도 됩니다.</p>
+            <p>다만 큰 틀은 지켜 주세요. 신대는 평생 한 신과만 계약하고, 신의 힘은 세 가지 방식으로 씁니다. <b>강림</b>은 신을 몸에 받아 몸이 강해지거나 변하는 것, <b>현신</b>은 신의 형상을 곁에 불러내는 것, <b>권능</b>은 신이 다스리는 바람, 불, 짐승 같은 힘을 부리는 것입니다. 어떤 계약이든 대가가 따르고, 힘을 과하게 빌리면 신에게 잡아먹힐 수도 있습니다.</p>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
   </div>
   <div class="roller" id="rollBot"></div>
 </div>
@@ -1069,7 +1118,7 @@ ul.plain li::marker { color: var(--seal); }
       if (g !== last) { var gl = document.createElement("div"); gl.className = "grp"; gl.textContent = g; host.appendChild(gl); last = g; }
       var b = document.createElement("button"); b.type = "button"; b.setAttribute("data-go", id);
       b.innerHTML = "<i></i><span></span>";
-      b.querySelector("i").textContent = id === "intro" ? "序" : numOf(n++);
+      b.querySelector("i").textContent = id === "intro" ? "序" : id === "faq" ? "問" : numOf(n++);
       b.querySelector("span").textContent = v.getAttribute("data-title");
       host.appendChild(b);
     });
@@ -1482,6 +1531,7 @@ var GROUPS = {"city": [["궁과 관청", ["palace", "seowon", "gwan", "hyeoncheo
       if (pView === "yohyeon") tl.add(enterYohyeon(), d * .45);
       else { castBusy = true; tl.add(enterCast(), d * .5); drawRel(d * .9); }
     }
+    if (id === "faq") tl.from("#v-faq .qa", { y: 10, autoAlpha: 0, duration: .45, stagger: .08, ease: "power2.out" }, d * .7);
     if (id === "org") tl.from("#v-org .tline, #v-org .trow", { scaleY: 0, transformOrigin: "50% 0%", duration: .35, stagger: .1 }, d * .7);
   }
   /* 스크롤: 글은 처음부터 다 보이고, 눈금과 막대만 차오른다 */
