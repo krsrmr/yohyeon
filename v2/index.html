@@ -168,21 +168,20 @@ b { font-weight: 700; }
 /* 동틀 녘 구름: 밤 → 종이 */
 .dawn { position: relative; display: block; width: 100%; height: 150px; margin-top: 40px; }
 
-/* ── 4. 요현 ── */
-.yh { padding: 14px 0 0; background: var(--paper); }
-.yh-grid { display: grid; gap: 30px; margin-top: 16px; }
-.jokja { width: min(64%, 250px); margin: 0 auto; transform-origin: 50% 0; }
-.jokja .cord { display: block; width: 90px; height: 24px; margin: 0 auto -2px; }
-.jokja .cord path { fill: none; stroke: var(--wood-hi); stroke-width: 2; }
-.jokja .cord circle { fill: var(--gold); }
-.roller { position: relative; z-index: 2; height: 14px; margin: 0 -7px; border-radius: 7px; background: linear-gradient(180deg, var(--wood-hi), var(--wood) 70%); box-shadow: 0 3px 6px rgba(0,0,0,.25); }
-.roller::before, .roller::after { content: ""; position: absolute; top: -3px; width: 10px; height: 20px; border-radius: 4px; background: var(--wood); box-shadow: inset 0 0 0 2px var(--wood-hi); }
-.roller::before { left: -5px; } .roller::after { right: -5px; }
-.mount { padding: 12px; background: #cfc2a0; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 2px, transparent 2px 7px), repeating-linear-gradient(-45deg, rgba(0,0,0,.035) 0 2px, transparent 2px 7px); box-shadow: 0 16px 34px rgba(40,25,10,.22); }
-.portrait { position: relative; aspect-ratio: 1 / 2.15; overflow: hidden; border: 1px solid var(--line); background: var(--paper-hi); }
-.portrait::before { content: ""; position: absolute; left: 50%; top: 38%; width: 130%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(184,69,44,.26), rgba(184,69,44,.08) 62%, transparent); }
-.portrait img { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 100%; }
-.portrait .stamp { position: absolute; right: 8px; top: 10px; z-index: 1; display: flex; flex-direction: column; align-items: center; padding: 4px 3px; border-radius: 2px; background: var(--seal); color: var(--seal-ink); font-family: var(--display); font-size: .78rem; line-height: 1.05; transform: rotate(-3deg); box-shadow: inset 0 0 0 1.5px var(--seal), inset 0 0 0 2.5px var(--seal-ink); }
+/* ── 4. 요현: 위아래 비단 띠 사이에 크게 선 전신. 허벅지께에서 흐려지고 글이 이어진다 ── */
+.yh { padding: 26px 0 0; }
+.band { height: 16px; border-top: 1px solid var(--wood-hi); border-bottom: 1px solid var(--wood-hi); background-color: #cfc2a0; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.09) 0 2px, transparent 2px 7px), repeating-linear-gradient(-45deg, rgba(0,0,0,.05) 0 2px, transparent 2px 7px); box-shadow: 0 3px 8px rgba(60,40,15,.08); }
+.yh .band:first-child { margin-bottom: 40px; }
+.yh .band:last-child { margin-top: 70px; }
+.yh-grid { max-width: 980px; margin: 0 auto; }
+.figure { position: relative; width: min(100%, 480px); margin: 6px auto 0; aspect-ratio: 1 / 1.55; overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 62%, transparent 96%); mask-image: linear-gradient(180deg, #000 0, #000 62%, transparent 96%); }
+.figure::before { content: ""; position: absolute; left: 52%; top: 30%; width: 96%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(184,69,44,.28), rgba(184,69,44,.09) 62%, transparent); }
+.figure .wm { position: absolute; right: 3%; top: 3%; writing-mode: vertical-rl; font-family: var(--display); font-size: clamp(5rem, 25vw, 8.5rem); line-height: 1; color: var(--seal); opacity: .08; }
+.figure img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
+.figure .stamp { position: absolute; right: 7%; top: 4%; z-index: 1; display: flex; flex-direction: column; align-items: center; padding: 5px 4px; border-radius: 2px; background: var(--seal); color: var(--seal-ink); font-family: var(--display); font-size: .86rem; line-height: 1.05; transform: rotate(-3deg); box-shadow: inset 0 0 0 1.5px var(--seal), inset 0 0 0 2.5px var(--seal-ink); }
+.info { position: relative; max-width: 640px; margin: -84px auto 0; padding: 0 var(--gut); padding-right: max(22px, env(safe-area-inset-right, 0px)); }
+.info .name, .info .role { text-shadow: 0 0 4px var(--paper), 0 0 12px var(--paper), 0 0 22px var(--paper); }
 .name { font-family: var(--display); font-weight: 400; font-size: clamp(2.2rem, 10vw, 3rem); line-height: 1.15; }
 .name small { font-size: .45em; color: var(--ink-soft); margin-left: 8px; }
 .role { margin-top: 6px; font-size: .92rem; color: var(--seal); letter-spacing: .02em; }
@@ -207,7 +206,7 @@ b { font-weight: 700; }
 .monk::before { content: "佛"; font-family: var(--display); color: var(--sansu); }
 
 /* ── 5. 주변 인물 ── */
-.cast { padding: 90px 0 80px; background: linear-gradient(180deg, var(--paper) 0, var(--paper-deep) 120px, var(--paper-deep) calc(100% - 120px), var(--paper) 100%); }
+.cast { padding: 64px 0 80px; background: linear-gradient(180deg, var(--paper) 0, var(--paper-deep) 120px, var(--paper-deep) calc(100% - 120px), var(--paper) 100%); }
 .cast-row { display: flex; gap: 12px; margin-top: 22px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 4px var(--gut) 16px; scroll-padding: 0 var(--gut); }
 .cast-row::-webkit-scrollbar { display: none; }
 .pc { flex: 0 0 min(62vw, 220px); scroll-snap-align: start; background: var(--paper-hi); border: 1px solid rgba(198,180,140,.8); box-shadow: 0 8px 22px rgba(60,40,15,.08); display: flex; flex-direction: column; }
@@ -226,7 +225,18 @@ b { font-weight: 700; }
 /* ── 6. 당신 ── */
 .you { padding: 10px 0 0; }
 .roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
-.role-c { padding: 14px 14px 12px; border: 1px solid rgba(198,180,140,.8); background: var(--paper-hi); }
+.role-c { display: block; width: 100%; text-align: left; padding: 14px 14px 12px; border: 1px solid rgba(198,180,140,.8); border-radius: 0; background: var(--paper-hi); transition: border-color .2s, background .2s, box-shadow .2s; }
+@media (hover: hover) { .role-c:hover { border-color: var(--seal); } }
+.role-c em { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-style: normal; font-size: .78rem; color: var(--seal); }
+.role-c em::after { content: "▾"; font-size: .9em; transition: transform .25s; }
+.role-c[aria-expanded="true"] { border-color: var(--seal); background: color-mix(in srgb, var(--seal) 8%, var(--paper-hi)); box-shadow: inset 0 -3px 0 var(--seal); }
+.role-c[aria-expanded="true"] em::after { transform: rotate(180deg); }
+.sample { position: relative; margin-top: 10px; border: 1px solid var(--seal); border-top-width: 3px; background: var(--paper-hi); }
+.sample:not([hidden]) { animation: unfold .35s ease both; }
+@keyframes unfold { from { opacity: 0; transform: translateY(-6px); } }
+.sample-hd { display: flex; align-items: center; gap: 8px; padding: 12px 16px 0; font-size: .9rem; color: var(--seal); }
+.sample-hd .hz { font-size: 1.2rem; }
+.sample pre { margin: 0; padding: 8px 16px 16px; font-family: var(--body); font-size: .92rem; line-height: 1.8; white-space: pre-wrap; color: var(--ink); }
 .role-c .hz { display: block; font-size: 1.7rem; line-height: 1.1; color: var(--sansu); }
 .role-c b { display: block; font-size: 1rem; margin-top: 6px; line-height: 1.4; }
 .role-c span { display: block; font-size: .84rem; color: var(--ink-soft); line-height: 1.55; margin-top: 2px; }
@@ -283,9 +293,10 @@ b { font-weight: 700; }
   .birds { left: 31%; top: 12%; }
   .inscr { right: 14%; top: 8%; }
   .hook { left: 12%; top: 36%; max-width: 380px; }
-  .yh-grid { grid-template-columns: 270px minmax(0, 1fr); gap: 46px; align-items: start; }
-  .jokja { width: 100%; position: sticky; top: calc(var(--top) + 20px); }
-  .yh .wrap { max-width: 860px; }
+  .yh-grid { display: grid; grid-template-columns: minmax(0, 430px) minmax(0, 1fr); gap: 40px; align-items: center; padding: 0 var(--gut); }
+  .figure { width: 100%; margin: 0; }
+  .yh .wrap { max-width: 980px; }
+  .info { margin: 0; padding: 0; }
   .cast-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); max-width: 1060px; margin-left: auto; margin-right: auto; overflow: visible; }
   .swipe { display: none; }
   .roles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -298,12 +309,8 @@ b { font-weight: 700; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .rv, .js .rumor.rv { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .mist, .cue i, .motes i, .jokja { animation: none !important; }
+  .mist, .cue i, .motes i { animation: none !important; }
   .motes { display: none; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .jokja.on { animation: hangsway 7s ease-in-out 1s infinite; }
-  @keyframes hangsway { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(.7deg); } 70% { transform: rotate(-.5deg); } }
 }
 </style>
 </head>
@@ -419,38 +426,37 @@ b { font-weight: 700; }
 
 <!-- ═══ 4. 요현 ═══ -->
 <section class="yh" id="yohyeon">
-  <div class="wrap">
-    <p class="eyebrow rv"><span class="hz">了玄</span>요현</p>
-    <div class="yh-grid">
-      <figure class="jokja rv" id="jokja">
-        <svg class="cord" viewBox="0 0 90 24" aria-hidden="true"><path d="M10 23 L45 4 L80 23"/><circle cx="45" cy="4" r="3.5"/></svg>
-        <div class="roller"></div>
-        <div class="mount"><div class="portrait"><span class="stamp" aria-hidden="true"><span>了</span><span>玄</span></span><img src="../img/yohyeon.webp" alt="요현 전신 초상" loading="lazy" decoding="async" id="yFig"></div></div>
-        <div class="roller"></div>
-      </figure>
-      <div>
-        <h2 class="name rv">요현 혜관<small>了玄 慧寬</small></h2>
-        <p class="role rv">진마사 임시 총령 · 30대 초중반 · 불문 승려</p>
-        <ul class="traits">
-          <li class="rv"><i>貌</i><span>183cm, 민머리. 보기만 해도 빡빡해 보이는 차가운 미남.</span></li>
-          <li class="rv"><i>性</i><span>무뚝뚝한 원리원칙주의자. 피곤하지만 그만큼 유능하다.</span></li>
-          <li class="rv"><i>實</i><span>아이들에게 다정하려 애쓰지만, 아이들은 그를 무서워한다.</span></li>
-        </ul>
-        <blockquote class="say rv">“들어가 있거라. 신경 쓰이게 앞에서 알짱거리지 말고.”</blockquote>
-        <div class="bond rv">
-          <h3>인연 단계<small>상태창에 보인다</small></h3>
-          <ol>
-            <li><i>一</i><span>업무 상대</span></li>
-            <li><i>二</i><span>눈에 밟히는 자</span></li>
-            <li><i>三</i><span>곁을 허락한 자</span></li>
-            <li><i>四</i><span>마음이 기운 자</span></li>
-            <li><i>五</i><span>정인</span></li>
-          </ol>
-        </div>
-        <p class="monk rv">이 세계의 불문은 연애도, 혼인도, 술도 금하지 않는다.</p>
+  <div class="band" aria-hidden="true"></div>
+  <div class="wrap"><p class="eyebrow rv"><span class="hz">了玄</span>요현</p></div>
+  <div class="yh-grid">
+    <figure class="figure rv">
+      <span class="wm" aria-hidden="true">了玄</span>
+      <span class="stamp" aria-hidden="true"><span>了</span><span>玄</span></span>
+      <img src="../img/yohyeon.webp" alt="요현 전신 초상" loading="lazy" decoding="async" id="yFig">
+    </figure>
+    <div class="info">
+      <h2 class="name rv">요현 혜관<small>了玄 慧寬</small></h2>
+      <p class="role rv">진마사 임시 총령 · 30대 초중반 · 불문 승려</p>
+      <ul class="traits">
+        <li class="rv"><i>貌</i><span>183cm, 민머리. 보기만 해도 빡빡해 보이는 차가운 미남.</span></li>
+        <li class="rv"><i>性</i><span>무뚝뚝한 원리원칙주의자. 피곤하지만 그만큼 유능하다.</span></li>
+        <li class="rv"><i>實</i><span>아이들에게 다정하려 애쓰지만, 아이들은 그를 무서워한다.</span></li>
+      </ul>
+      <blockquote class="say rv">“들어가 있거라. 신경 쓰이게 앞에서 알짱거리지 말고.”</blockquote>
+      <div class="bond rv">
+        <h3>인연 단계<small>상태창에 보인다</small></h3>
+        <ol>
+          <li><i>一</i><span>업무 상대</span></li>
+          <li><i>二</i><span>눈에 밟히는 자</span></li>
+          <li><i>三</i><span>곁을 허락한 자</span></li>
+          <li><i>四</i><span>마음이 기운 자</span></li>
+          <li><i>五</i><span>정인</span></li>
+        </ol>
       </div>
+      <p class="monk rv">이 세계의 불문은 연애도, 혼인도, 술도 금하지 않는다.</p>
     </div>
   </div>
+  <div class="band" aria-hidden="true"></div>
 </section>
 
 <!-- ═══ 5. 주변 인물 ═══ -->
@@ -490,16 +496,66 @@ b { font-weight: 700; }
   <div class="wrap">
     <p class="eyebrow rv"><span class="hz">汝</span>당신</p>
     <h2 class="title rv">주인공은, 당신</h2>
-    <p class="sub rv">넷 가운데 하나를 골라 페르소나에 적는다.</p>
+    <p class="sub rv">넷 가운데 하나를 골라 페르소나에 적는다. 누르면 예시가 열린다.</p>
     <div class="roles">
-      <div class="role-c rv"><span class="hz" aria-hidden="true">公</span><b>진마사 퇴마사</b><span>요현의 부하. 신입은 진졸부터.</span></div>
-      <div class="role-c rv"><span class="hz" aria-hidden="true">遊</span><b>떠돌이 퇴마사</b><span>의뢰로 먹고산다.</span></div>
-      <div class="role-c rv"><span class="hz" aria-hidden="true">文</span><b>문관, 지원 인력</b><span>견기가 없어도 된다.</span></div>
-      <div class="role-c rv"><span class="hz" aria-hidden="true">民</span><b>일반인, 궁인</b><span>사건에 휘말린다.</span></div>
+      <button class="role-c rv" type="button" aria-expanded="false" aria-controls="sp-gong"><span class="hz" aria-hidden="true">公</span><b>진마사 퇴마사</b><span>요현의 부하. 신입은 진졸부터.</span><em>예시</em></button>
+      <button class="role-c rv" type="button" aria-expanded="false" aria-controls="sp-yu"><span class="hz" aria-hidden="true">遊</span><b>떠돌이 퇴마사</b><span>의뢰로 먹고산다.</span><em>예시</em></button>
+      <button class="role-c rv" type="button" aria-expanded="false" aria-controls="sp-mun"><span class="hz" aria-hidden="true">文</span><b>문관, 지원 인력</b><span>견기가 없어도 된다.</span><em>예시</em></button>
+      <button class="role-c rv" type="button" aria-expanded="false" aria-controls="sp-min"><span class="hz" aria-hidden="true">民</span><b>일반인, 궁인</b><span>사건에 휘말린다.</span><em>예시</em></button>
+    </div>
+    <!-- 페르소나 예시: 위 칸을 눌러야 보인다. 글은 여기서 고치면 된다 -->
+    <div class="sample" id="sp-gong" hidden>
+      <p class="sample-hd"><span class="hz" aria-hidden="true">公</span>진마사 퇴마사 예시</p>
+      <button class="copy" type="button" data-copy="st-gong"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM4 7h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v11h11V9z"/></svg>복사</button>
+<pre id="st-gong">이름: 한서월
+나이 / 성별: 22 / 여
+신분과 소속: 진마사 진졸. 들어온 지 석 달
+견기: 있음
+계통과 술법: 도가. 부적과 검
+할 수 있는 일: 부적 던지기, 기초 검술, 작은 결계 치기
+현장 정화: 할 수 있음. 조에서 정화를 맡는다
+요현과의 관계: 첫 출동에서 요현의 조에 배정됐다</pre>
+    </div>
+    <div class="sample" id="sp-yu" hidden>
+      <p class="sample-hd"><span class="hz" aria-hidden="true">遊</span>떠돌이 퇴마사 예시</p>
+      <button class="copy" type="button" data-copy="st-yu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM4 7h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v11h11V9z"/></svg>복사</button>
+<pre id="st-yu">이름: 백무진
+나이 / 성별: 28 / 남
+신분과 소속: 떠돌이 퇴마사. 남문객주에서 의뢰를 뗀다
+견기: 있음
+계통과 술법: 신대. 늑대 신과 계약
+할 수 있는 일: 냄새로 이형 쫓기, 맨손 격투. 강림하면 몸이 늑대처럼 날래진다
+현장 정화: 할 수 없음
+계약한 신: 북쪽 설원의 늑대 신. 대가로 보름달이 뜨면 사흘을 앓는다
+요현과의 관계: 현장에서 두 번 부딪쳤다. 서로 탐탁지 않다</pre>
+    </div>
+    <div class="sample" id="sp-mun" hidden>
+      <p class="sample-hd"><span class="hz" aria-hidden="true">文</span>문관, 지원 인력 예시</p>
+      <button class="copy" type="button" data-copy="st-mun"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM4 7h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v11h11V9z"/></svg>복사</button>
+<pre id="st-mun">이름: 서하경
+나이 / 성별: 26 / 남
+신분과 소속: 진마사 문관. 총령 집무실 문서 담당
+견기: 없음
+계통과 술법: 없음
+할 수 있는 일: 문서와 보고, 부적 재고 관리. 도성 지리에 밝다
+현장 정화: 할 수 없음
+요현과의 관계: 하루에도 몇 번씩 결재 서류를 들고 집무실을 드나든다</pre>
+    </div>
+    <div class="sample" id="sp-min" hidden>
+      <p class="sample-hd"><span class="hz" aria-hidden="true">民</span>일반인, 궁인 예시</p>
+      <button class="copy" type="button" data-copy="st-min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM4 7h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v11h11V9z"/></svg>복사</button>
+<pre id="st-min">이름: 연이
+나이 / 성별: 21 / 여
+신분과 소속: 왕궁 내전의 나인
+견기: 모름. 구조된 뒤로 가끔 허공의 검은 금이 보인다
+계통과 술법: 없음
+할 수 있는 일: 궁 안 길과 소문에 밝다. 바느질
+현장 정화: 할 수 없음
+요현과의 관계: 홀린 동료를 쫓아갔다가 요현에게 구조됐다</pre>
     </div>
     <div class="tpl rv">
       <h3>페르소나 양식</h3>
-      <button class="copy" type="button" id="copyTpl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM4 7h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v11h11V9z"/></svg>복사</button>
+      <button class="copy" type="button" data-copy="tplText"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM4 7h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v11h11V9z"/></svg>복사</button>
 <pre id="tplText">이름:
 나이 / 성별:
 신분과 소속:
@@ -632,11 +688,25 @@ b { font-weight: 700; }
   frame();
   totop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); });
 
-  /* 페르소나 양식 복사 */
+  /* 자리 넷: 누르면 그 자리의 예시가 열리고, 다시 누르면 닫힌다 */
+  var roleBtns = $$(".role-c");
+  roleBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var wasOpen = b.getAttribute("aria-expanded") === "true";
+      roleBtns.forEach(function (x) { x.setAttribute("aria-expanded", "false"); $("#" + x.getAttribute("aria-controls")).hidden = true; });
+      if (wasOpen) return;
+      b.setAttribute("aria-expanded", "true");
+      var sp = $("#" + b.getAttribute("aria-controls")); sp.hidden = false;
+      var r = sp.getBoundingClientRect();
+      if (r.bottom > window.innerHeight) { try { sp.scrollIntoView({ block: "nearest", behavior: reduce ? "auto" : "smooth" }); } catch (e) { sp.scrollIntoView(false); } }
+    });
+  });
+
+  /* 양식·예시 복사 */
   var toastEl = $("#toast"), tt;
   function toast(m) { toastEl.textContent = m; toastEl.hidden = false; clearTimeout(tt); tt = setTimeout(function () { toastEl.hidden = true; }, 2000); }
-  $("#copyTpl").addEventListener("click", function () {
-    var text = $("#tplText").textContent;
+  $$("[data-copy]").forEach(function (btn) { btn.addEventListener("click", function () {
+    var text = $("#" + btn.getAttribute("data-copy")).textContent;
     function fallback() {
       var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
       document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) {} ta.remove();
@@ -644,7 +714,7 @@ b { font-weight: 700; }
     }
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { toast("양식을 복사했어요"); }, fallback);
     else fallback();
-  });
+  }); });
 })();
 </script>
 </body>
