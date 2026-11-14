@@ -205,8 +205,26 @@ b { font-weight: 700; }
 .pc .rel.bad { background: var(--seal); }
 .swipe { margin-top: 6px; text-align: right; font-size: .7rem; letter-spacing: .2em; color: var(--ink-faint); padding: 0 var(--gut-r) 0 var(--gut); }
 
-/* ── 伍 당신 ── */
-.you { padding: 40px 0 0; }
+/* ── 伍 인트로: 세 가지 첫 장면 ── */
+.intros-sec { padding: 110px 0 0; }
+.intros { display: grid; gap: 18px; max-width: 1040px; margin: 0 auto; padding: 0 var(--gut-r) 0 var(--gut); }
+.intro { padding: 22px 20px 18px; background: var(--paper-hi); border: 1px solid var(--hair); border-top: 2px solid var(--ink); }
+.intro .ih { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.intro .ih .hz { font-size: 1.7rem; line-height: 1.1; letter-spacing: .08em; }
+.intro .ih b { font-size: 1rem; letter-spacing: .1em; }
+.intro .tag { font-size: .7rem; letter-spacing: .2em; padding: 1px 8px; border: 1px solid var(--hair); color: var(--ink-faint); }
+.intro .tag.warm { border-color: rgba(159,47,29,.4); color: var(--seal); }
+.intro .scene { margin-top: 14px; font-size: .96rem; line-height: 1.9; color: var(--ink); text-wrap: pretty; }
+.intro dl { margin-top: 14px; border-top: 1px solid var(--hair); }
+.intro dl > div { display: grid; grid-template-columns: 4.6em minmax(0, 1fr); gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--hair); }
+.intro dl > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.intro dt { font-size: .74rem; letter-spacing: .14em; line-height: 1.95; color: var(--ink-faint); }
+.intro dd { font-size: .88rem; line-height: 1.8; color: var(--ink-soft); }
+.intro-note { max-width: 620px; margin: 22px auto 0; padding: 0 var(--gut-r) 0 var(--gut); text-align: center; font-size: .84rem; line-height: 1.8; color: var(--ink-faint); text-wrap: balance; }
+@media (min-width: 760px) { .intros { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ── 陸 당신 ── */
+.you { padding: 120px 0 0; }
 .roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--hair); border-left: 1px solid var(--hair); }
 .role-c { display: flex; flex-direction: column; align-items: flex-start; width: 100%; text-align: left; padding: 18px 16px 15px; border: 0; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair); border-radius: 0; background: transparent; transition: background .3s; }
 .role-c .hz { display: block; font-size: 1.35rem; line-height: 1.1; color: var(--ink-faint); transition: color .3s; }
@@ -231,7 +249,7 @@ b { font-weight: 700; }
 .notes { margin-top: 16px; display: grid; gap: 4px; font-size: .86rem; color: var(--ink-faint); }
 .notes b { font-weight: 400; color: var(--ink); }
 
-/* ── 陸 플레이 ── */
+/* ── 柒 플레이 ── */
 .play { padding: 130px 0 0; }
 .menu { max-width: 440px; margin: 0 auto; }
 .menu > div { display: flex; align-items: baseline; gap: 12px; padding: 9px 0; }
@@ -453,10 +471,48 @@ b { font-weight: 700; }
   <p class="swipe" aria-hidden="true">옆으로 넘겨 보기 →</p>
 </section>
 
-<!-- ═══ 伍 당신 ═══ -->
+<!-- ═══ 伍 인트로 ═══ -->
+<!-- 인트로 안내: 유니챗 소개 페이지의 '인트로 안내'를 줄인 것. 글은 여기서 고치면 된다 -->
+<section class="intros-sec" id="intro">
+  <div class="wrap">
+    <header class="op rv"><span class="num">伍</span><span class="kick">인트로</span><h2>세 가지 첫 장면</h2><p class="sub">인트로마다 시작하는 자리와 요현과의 사이가 다릅니다.</p></header>
+  </div>
+  <div class="intros">
+    <article class="intro rv">
+      <div class="ih"><span class="hz">入宮</span><b>입궁</b><span class="tag">기본</span></div>
+      <p class="scene">늦가을 새벽, 오늘 처음 입궁한 당신이 총령 집무처에서 요현을 처음 마주합니다.</p>
+      <dl>
+        <div><dt>관계</dt><dd>초면. 인연 一단계에서 시작합니다.</dd></div>
+        <div><dt>추천</dt><dd>세계관을 잘 모르거나 페르소나를 아직 정하지 않았다면 이 인트로를 권합니다.</dd></div>
+        <div><dt>유저노트</dt><dd>입궁한 이유를 적어 두면 흐름이 매끄럽습니다.</dd></div>
+      </dl>
+    </article>
+    <article class="intro rv">
+      <div class="ih"><span class="hz">戰場</span><b>전장</b></div>
+      <p class="scene">해 질 녘 갈대밭, 화 단계 이형을 토벌한 직후. 다친 팔로 지휘를 이어 가던 요현의 눈에 당신이 들어옵니다.</p>
+      <dl>
+        <div><dt>신분</dt><dd>진마사 신입이 아니어도 됩니다. 어떤 신분이든 괜찮습니다.</dd></div>
+        <div><dt>관계</dt><dd>유저노트에 적은 관계와 단계를 따릅니다. 비워 두면 첫 대면, 一단계입니다.</dd></div>
+        <div><dt>추천</dt><dd>요현의 동료 겸 상관, 사이가 험한 떠돌이 퇴마사 같은 페르소나.</dd></div>
+      </dl>
+    </article>
+    <article class="intro rv">
+      <div class="ih"><span class="hz">浮遊</span><b>부유</b><span class="tag warm">할로윈</span></div>
+      <p class="scene">새벽 안개 낀 청하 나루. 수귀를 토벌한 직후, 강물에 떠내려온 당신을 요현이 건져 올립니다.</p>
+      <dl>
+        <div><dt>당신</dt><dd>기억을 잃었습니다. 기억나는 것이 있어도 그것이 진실인지는 알 수 없습니다.</dd></div>
+        <div><dt>관계</dt><dd>처음 보는 사이지만, 당신이 모르는 어떤 관계가 이미 있습니다. 로맨스를 전제로 한 인트로입니다.</dd></div>
+        <div><dt>추천</dt><dd>병약하거나 몸이 찬 설정, 내세울 신분도 과거도 없는 정체 모를 존재. 핵심 비밀은 페르소나에 적지 않는 편이 좋습니다.</dd></div>
+      </dl>
+    </article>
+  </div>
+  <p class="intro-note rv">첫 메시지를 보내기 전, 유저노트에 입궁한 계기나 요현과의 관계를 적어 두면 흐름 반영이 수월합니다. 필수는 아닙니다.</p>
+</section>
+
+<!-- ═══ 陸 당신 ═══ -->
 <section class="you" id="you">
   <div class="wrap">
-    <header class="op rv"><span class="num">伍</span><span class="kick">당신</span><h2>당신의 자리</h2><p class="sub">넷 가운데 하나를 골라 페르소나에 적습니다. 누르면 예시가 열립니다.</p></header>
+    <header class="op rv"><span class="num">陸</span><span class="kick">당신</span><h2>당신의 자리</h2><p class="sub">넷 가운데 하나를 골라 페르소나에 적습니다. 누르면 예시가 열립니다.</p></header>
     <div class="roles rv">
       <button class="role-c" type="button" aria-expanded="false" aria-controls="sp-gong"><span class="hz" aria-hidden="true">公</span><b>진마사 퇴마사</b><span>요현의 부하. 신입은 진졸부터.</span><em>예시</em></button>
       <button class="role-c" type="button" aria-expanded="false" aria-controls="sp-yu"><span class="hz" aria-hidden="true">遊</span><b>떠돌이 퇴마사</b><span>의뢰로 먹고삽니다.</span><em>예시</em></button>
@@ -533,10 +589,10 @@ b { font-weight: 700; }
   </div>
 </section>
 
-<!-- ═══ 陸 플레이 ═══ -->
+<!-- ═══ 柒 플레이 ═══ -->
 <section class="play" id="play">
   <div class="wrap">
-    <header class="op rv"><span class="num">陸</span><span class="kick">플레이</span><h2>이야기의 법도</h2></header>
+    <header class="op rv"><span class="num">柒</span><span class="kick">플레이</span><h2>이야기의 법도</h2></header>
     <dl class="menu rv">
       <div><dt>/의뢰</dt><dd>작은 이형 사건</dd></div>
       <div><dt>/수사</dt><dd>균열의 흔적 쫓기</dd></div>
